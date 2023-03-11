@@ -16,15 +16,18 @@ public class MethodCreator implements FactoryMethod{
 
     public MethodCreator() {}
 
+    
+    
+    //FactoryMethod
     @Override
     public Method CreateMethod(TypeMethod type) {
        
-        String classname = "Root_calculator.Method."+type;
+        String classname = "Root_calculator.Method."+ type;
         Method temp = null;
         Class c = null;
         try {
             c = Class.forName(classname);
-            temp = (Method) c.newInstance();
+            temp =   (Method) c.newInstance();
    
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(MethodCreator.class.getName()).log(Level.SEVERE, null, ex);
