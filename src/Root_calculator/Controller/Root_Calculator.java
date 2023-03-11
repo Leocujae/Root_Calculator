@@ -2,12 +2,7 @@
 
 package Root_calculator.Controller;
 
-import Root_calculator.Factory.MethodCreator;
-import Root_calculator.Factory.TypeMethod;
-import static Root_calculator.Factory.TypeMethod.MNewton;
-import static Root_calculator.Factory.TypeMethod.MRegula_falsi;
-import static Root_calculator.Factory.TypeMethod.Mbiseccion;
-import Root_calculator.Method.Method;
+import Evaluator.ArithmeticEvaluator;
 
 
 
@@ -24,6 +19,11 @@ public class Root_Calculator {
         
         Controller x = Controller.getInstance();
        
+        
+        
+        ArithmeticEvaluator temp = new ArithmeticEvaluator();
+        System.out.println(temp.ReversePolishNotation("(2+2)+(2+2)*2"));
+        
         
         x.setTypeMethod(2);
         x.setFunction(null);
