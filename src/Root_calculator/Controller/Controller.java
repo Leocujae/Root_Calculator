@@ -68,7 +68,7 @@ public class Controller {
     public void setFunction(String ecuation){ 
         
         //Prueba
-        f = x -> x -3;
+        f = x -> 3/x -3;
       
     }
 

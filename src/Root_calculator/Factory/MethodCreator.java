@@ -16,8 +16,6 @@ public class MethodCreator implements FactoryMethod{
 
     public MethodCreator() {}
 
-    
-    
     //FactoryMethod
     @Override
     public Method CreateMethod(TypeMethod type) {

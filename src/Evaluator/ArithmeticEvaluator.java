@@ -2,6 +2,7 @@
 package Evaluator;
 
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -11,17 +12,15 @@ import java.util.LinkedList;
 public class ArithmeticEvaluator {
 
     
-    
     public ArithmeticEvaluator() {
-        
     }
+    
+    
+    public LinkedList ReversePolishNotation(String ecuation) {
 
-    public String ReversePolishNotation(String ecuation) {
-
-        String expretion = "";
         Deque<Character> Operadores = new LinkedList();
-        
-        
+        LinkedList<Object> ListResult = new LinkedList();
+
         int i = 0;
         int size;
 
@@ -30,38 +29,107 @@ public class ArithmeticEvaluator {
 
             char pointChar = ecuation.charAt(i);
 
-            if (Character.isDigit(pointChar)) {
+            if (Character.isDigit(pointChar) || pointChar == '.') {
                 num = num + pointChar;
+                
+        //----------------Elimina Parentecis------------------
             } else if (pointChar == '(') {
-                size = i + 1;
+
+                size = ecuation.length() - 1;
+
                 char Charsize = ecuation.charAt(size);
 
                 while (Charsize != ')') {
+                    size--;
                     Charsize = ecuation.charAt(size);
-                    size++;
+
                 }
-                num = ReversePolishNotation(ecuation.substring(i+1, size-1));
-                i = size-1;
-            } else {
-                expretion = expretion + num + " ";
+        //----------------------------------------------------
+                ListResult.addAll(ReversePolishNotation(ecuation.substring(i + 1, size)));
+                i = size;
+            } else if (pointChar != ')') {
+                
+                if (!num.equals("")) {
+                    ListResult.add(Double.valueOf(num));
+                }
                 num = "";
-                expretion = DesapilarOperator(pointChar, expretion , Operadores);
+                DesapilarOperator(pointChar, Operadores, ListResult);
             }
             i++;
+
         }
-        expretion = expretion +num +" ";
-        
-        
-        while(!Operadores.isEmpty() ){
-            expretion = expretion + Operadores.poll();
+
+        if (!num.equals("")) {
+            ListResult.add(Double.valueOf(num));
         }
-        //System.out.println(expretion);
-        return expretion;
+        while (!Operadores.isEmpty()) {
+            ListResult.add(Operadores.poll());
+        }
+
+        return ListResult;
     }
-    
-    private String DesapilarOperator(char operator, String expretion , Deque<Character> Operadores) {
+    public double Calculo(LinkedList <Object >ListResult){
+        
+        Deque<Double> temp = new LinkedList<>();
+        
+        
+        Iterator<Object> it = ListResult.iterator();
+        double a ;
+        double b ;
+        while(it.hasNext()){
+            Object num = it.next();
+            
+            
+            if(num instanceof Double){
+                temp.push((Double) num);
+            }
+            else {
+                b = temp.pop();
+                a = temp.pop();
+                switch ((char) num) {
+                    case '+': {
+
+                        temp.push(a + b);
+                        break;
+                    }
+                    case '-': {
+
+                        temp.push(a - b);
+                        break;
+                    }
+                    case '*': {
+
+                        temp.push(a * b);
+                        break;
+                    }
+                    case '/': {
+
+                        temp.push(a / b);
+                        break;
+                    }
+                    case '^': {
+
+                        temp.push(Math.pow(a, b));
+                        break;
+                    }
+                }
+
+                
+               
+            }
+            
+            
+                
+        }
+        
+        
+        
+        
+        return temp.pop() ;
+    } 
+    private void DesapilarOperator(char operator, Deque<Character> Operadores , LinkedList ListResult) {
         boolean end = false;
-        Deque temp = new LinkedList();
+       
 
         int ValueOperator = OperatorValue(operator);
 
@@ -70,17 +138,15 @@ public class ArithmeticEvaluator {
 
             ValuedequeOperator = OperatorValue(Operadores.peek());
             if (ValuedequeOperator == -1) {
-                temp.push(Operadores.pop());
+                Operadores.pop();
             } else if (ValuedequeOperator > ValueOperator) {
-
-                expretion = expretion + Operadores.pop() + " ";
+                ListResult.add(Operadores.poll());
             } else {
                 end = true;
             }
         }
-
         Operadores.push(operator);
-        return expretion;
+
     }
     private int OperatorValue(char operator) {
 
@@ -117,9 +183,3 @@ public class ArithmeticEvaluator {
 
     }
 }
-    
-    
-    
-
-    
-
