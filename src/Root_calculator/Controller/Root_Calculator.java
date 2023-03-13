@@ -2,8 +2,8 @@
 
 package Root_calculator.Controller;
 
-import Evaluator.ArithmeticEvaluator;
-import java.util.Iterator;
+import Evaluator.FunctionEvaluator;
+import java.util.ArrayList;
 
 
 /**
@@ -16,19 +16,30 @@ public class Root_Calculator {
         
         
         Controller x = Controller.getInstance();
+
        
         
         
-        ArithmeticEvaluator temp = new ArithmeticEvaluator();
         
-      
+        ArrayList<Object> asd = new ArrayList();
+     
+        asd.add("e");
+        asd.add("^");
+        asd.add("2");
+        asd.add("+");
+        asd.add("1");
+       
         
+        String X = "10";
         
+        FunctionEvaluator temp = new FunctionEvaluator(asd,X);
+        System.out.println(temp.Calculo());
         
+       
+       
         
-        System.out.println(temp.Calculo(temp.ReversePolishNotation("(5+5)*3^2")));
-        
-        
+       
+         
         System.out.println("");
         x.setTypeMethod(2);
         x.setFunction(null);
