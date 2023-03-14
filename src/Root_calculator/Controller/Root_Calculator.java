@@ -23,13 +23,18 @@ public class Root_Calculator {
         
         ArrayList<Object> asd = new ArrayList();
      
-        asd.add("e");
-        asd.add("^");
+        asd.add("(");
         asd.add("2");
         asd.add("+");
-        asd.add("1");
-       
-        
+        asd.add("2");
+        asd.add("+");
+        asd.add("2");
+        asd.add("+");
+        asd.add("2");
+        asd.add(")");
+        asd.add("*");
+        asd.add("5");
+ 
         String X = "10";
         
         FunctionEvaluator temp = new FunctionEvaluator(asd,X);

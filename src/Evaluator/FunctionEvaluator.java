@@ -115,21 +115,8 @@ public class FunctionEvaluator {
         
                     ListResult.add(String.valueOf(Math.exp(1)));
                 }
-                
-                
-                else if (operator == '(') {
-
-                    int j = ecuation.size() - 1;
-                    while (j > i && operator != ')') {
-                        operator = ((String)ecuation.get(j)).charAt(0);
-                        j--;
-                    }
-                    ArrayList<Object> Copy = SubArray(ecuation, i + 1, j);
-                    ListResult.addAll(ReversePolishNotation(Copy));
-                    i = j + 1;
-                } else {
+                else {
                     DesapilarOperator(operator, Operadores, ListResult);
-
                 }
             }
 
@@ -160,55 +147,67 @@ public class FunctionEvaluator {
         return Listreturn;
     }
     private void DesapilarOperator(char operator, Deque<Character> Operadores, ArrayList<Object> ListResult) {
-        boolean end = false;
+      
        
-
-        int ValueOperator = OperatorValue(operator);
-
-        int ValuedequeOperator;
-        while (!Operadores.isEmpty() && !end) {
-
-            ValuedequeOperator = OperatorValue(Operadores.peek());
-            if (ValuedequeOperator == -1) {
-                Operadores.pop();
-            } else if (ValuedequeOperator > ValueOperator) {
-                ListResult.add(String.valueOf(Operadores.poll()));
-            } else {
-                end = true;
+        if (operator == '(') {
+            Operadores.push(operator);
+        } else if (operator == ')') {
+            char tempOperator = Operadores.pop();
+            while (tempOperator != '(') {
+                ListResult.add(String.valueOf(tempOperator));
+                tempOperator = Operadores.pop();
             }
-        }
-        Operadores.push(operator);
+        } else {
+            
+            boolean end = false;
+            int ValueOperator = OperatorValue(operator);
 
+            int ValuedequeOperator;
+            while (!Operadores.isEmpty() && !end) {
+
+                ValuedequeOperator = OperatorValue(Operadores.peek());
+                if (ValuedequeOperator == -1) {
+                    Operadores.pop();
+                } else if (ValuedequeOperator > ValueOperator) {
+                    ListResult.add(String.valueOf(Operadores.poll()));
+                } else {
+                    end = true;
+                }
+            }
+            Operadores.push(operator);
+        }
     }
     private int OperatorValue(char operator) {
 
         int value = -1;
 
         switch (operator) {
-            case '+': {
+            
+            case '(': {
                 value = 0;
+                break;
+            }
+            case '+': {
+                value = 1;
                 break;
             }
             case '-': {
-                value = 0;
+                value = 1;
                 break;
             }
             case '*': {
-                value = 1;
-                break;
-            }
-            case '/': {
-                value = 1;
-                break;
-            }
-            case '^': {
                 value = 2;
                 break;
             }
-            case '(': {
-                value = -1;
+            case '/': {
+                value = 2;
                 break;
             }
+            case '^': {
+                value = 3;
+                break;
+            }
+           
 
         }
         return value;
