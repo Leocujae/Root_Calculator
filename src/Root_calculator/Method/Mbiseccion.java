@@ -4,6 +4,7 @@
  */
 package Root_calculator.Method;
 import Root_calculator.Controller.Controller;
+import java.util.ArrayList;
 import java.util.function.Function;
 
 /**
@@ -13,13 +14,17 @@ import java.util.function.Function;
 public class Mbiseccion extends Method{
 
     private double Midpoint ;
-    
     private double pointAB[];
     private double tolerance;
-    private Function<Double,Double> function;
+    private ArrayList<Object> ListResult;
+    
+   
 
     
     public Mbiseccion() {
+        
+        
+        this.ListResult = new ArrayList<>();
         this.pointAB = new double[2];
         loadDate();
         setMidPoint();
@@ -38,11 +43,11 @@ public class Mbiseccion extends Method{
     public double Solution() {
 
         boolean end = false ;
-        double FunctionPointValue =function.apply(Midpoint) ;
+        double FunctionPointValue =Calculo(ListResult,String.valueOf(Midpoint)) ;
         
         while(pointAB[1] - pointAB[0] > tolerance && !end)
         {
-        double fa = function.apply(pointAB[0]);
+        double fa = Calculo(ListResult,String.valueOf(pointAB[0]));
         //double fb = function.apply(pointAB[1]);
         
             if (fa * FunctionPointValue == 0) {
@@ -56,7 +61,7 @@ public class Mbiseccion extends Method{
                 
             }
             setMidPoint();
-            FunctionPointValue = function.apply(Midpoint);
+            FunctionPointValue = Calculo(ListResult,String.valueOf(Midpoint)) ;
         }
         return Midpoint;
     }
@@ -65,7 +70,9 @@ public class Mbiseccion extends Method{
     @Override
     protected final void loadDate() {
         
-        function = Controller.getInstance().getF();
+        
+        
+        ListResult = Controller.getInstance().getFunction();
         pointAB[0] = Controller.getInstance().getArreglo()[0];
         pointAB[1] = Controller.getInstance().getArreglo()[1];
         tolerance = Controller.getInstance().getTolerance();

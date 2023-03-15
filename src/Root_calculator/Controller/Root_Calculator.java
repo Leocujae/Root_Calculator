@@ -2,7 +2,6 @@
 
 package Root_calculator.Controller;
 
-import Evaluator.FunctionEvaluator;
 import java.util.ArrayList;
 
 
@@ -23,33 +22,20 @@ public class Root_Calculator {
         
         ArrayList<Object> asd = new ArrayList();
      
-        asd.add("(");
-        asd.add("2");
-        asd.add("+");
-        asd.add("2");
-        asd.add("+");
-        asd.add("2");
-        asd.add("+");
-        asd.add("2");
-        asd.add(")");
-        asd.add("*");
-        asd.add("5");
- 
-        String X = "10";
-        
-        FunctionEvaluator temp = new FunctionEvaluator(asd,X);
-        System.out.println(temp.Calculo());
-        
+       
+        asd.add("x");
        
        
+        //String X = "10";
         
-       
+
          
-        System.out.println("");
+        System.out.println(asd);
+        System.out.print("La raiz es aproximadamente :");
         x.setTypeMethod(2);
-        x.setFunction(null);
-        x.setIntervalos(0, 10);
-        x.setTolerance(0.001);
+        x.setFunction(asd);
+        x.setIntervalos( -0.1, 10);
+        x.setTolerance(0.012);
         x.getResulProblem();
     }
 

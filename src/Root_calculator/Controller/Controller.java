@@ -1,10 +1,13 @@
 
 package Root_calculator.Controller;
 
+import Evaluator.FunctionEvaluator;
 import Root_calculator.Factory.MethodCreator;
 import Root_calculator.Factory.TypeMethod;
 import Root_calculator.Method.Method;
-import java.util.function.Function;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  *
@@ -16,21 +19,22 @@ public class Controller {
     
     
     private static Controller controller = null;
-    
+  
+    private ArrayList<Object> ListResult;
     private double Tolerance ;
-    private Function <Double,Double> f;
-    private MethodCreator Creator ;
-    private TypeMethod typeMethod ;
-    private double[] arreglo;
-    
-    
+    private TypeMethod typeMethod;
+    private double[] intervalos;
+    private FunctionEvaluator evaluator;
+   
     
     private Controller() {
+        
+        this.ListResult = new ArrayList<>();
         this.Tolerance = 0.5;
-        this.Creator = new MethodCreator();
         this.typeMethod = null;
-        this.arreglo  = new double[2];
-        this.f = null;
+        this.intervalos  = new double[2];
+       
+        
     }
 
     //Singleton
@@ -43,18 +47,22 @@ public class Controller {
          return controller;
     }
 
-    public Function<Double, Double> getF() {
-        return f;
+   
+    public void setFunction(ArrayList<Object> function){
+        ReversePolishNotation(function);
     }
-
+    public ArrayList<Object> getFunction(){
+        
+        return ListResult;
+    }
+    
+    
     public double[] getArreglo() {
-        return arreglo;
+        return intervalos;
     }
-
     public double getTolerance() {
         return Tolerance;
     }
-
     public void setTolerance(double Tolerance) {
         this.Tolerance = Tolerance;
     }
@@ -62,26 +70,127 @@ public class Controller {
         typeMethod = TypeMethod.values()[index];
     }
     public void setIntervalos(double a , double b){
-        this.arreglo[0] = a;
-        this.arreglo[1] = b;
+        this.intervalos[0] = a;
+        this.intervalos[1] = b;
     }
-    public void setFunction(String ecuation){ 
-        
-        //Prueba
-        f = x -> 3/x -3;
-      
-    }
+ 
 
 
     public double getResulProblem(){
         double solution = 0 ;
+        MethodCreator Creator = new MethodCreator();
         solution = ((Method)Creator.CreateMethod(typeMethod)).Solution();
         System.out.println(solution);
         return solution;
     }
     
     
-    
-    
-    
+    private void ReversePolishNotation(ArrayList<Object> ecuation ){
+        
+    //------------Pila para las Operaciones--(+-*/^)------------//
+        Deque<Character> Operadores = new LinkedList();
+        int i = 0;
+        while (i < ecuation.size()) {
+
+            String object = (String) ecuation.get(i);
+            try {
+                
+                Double.valueOf(object);
+                ListResult.add(object);
+                
+            } catch (Exception e) {
+
+                char operator = object.charAt(0);
+
+                switch (operator) {
+                    case 'e': {
+                        ListResult.add(String.valueOf(Math.exp(1)));
+                        break;
+                    }
+                    case 'x': {
+                        ListResult.add(operator);
+                        break;
+                    }
+                    default: {
+                        DesapilarOperator(operator, Operadores);
+                    }
+                }
+
+            }
+
+            i++;
+        }
+        while (!Operadores.isEmpty()) {
+            ListResult.add(String.valueOf(Operadores.poll()));
+        }
+    }
+    private void DesapilarOperator(char operator, Deque<Character> Operadores) {
+      
+       
+        if (operator == '(') {
+            Operadores.push(operator);
+        } else if (operator == ')') {
+            char tempOperator = Operadores.pop();
+            while (tempOperator != '(') {
+                ListResult.add(String.valueOf(tempOperator));
+                tempOperator = Operadores.pop();
+            }
+        } else {
+            
+            boolean end = false;
+            int ValueOperator = OperatorValue(operator);
+
+            int ValuedequeOperator;
+            while (!Operadores.isEmpty() && !end) {
+
+                ValuedequeOperator = OperatorValue(Operadores.peek());
+                if (ValuedequeOperator == -1) {
+                    Operadores.pop();
+                } else if (ValuedequeOperator > ValueOperator) {
+                    ListResult.add(String.valueOf(Operadores.poll()));
+                } else {
+                    end = true;
+                }
+            }
+            Operadores.push(operator);
+        }
+    }
+    private int OperatorValue(char operator) {
+
+        int value = -1;
+
+        switch (operator) {
+            
+            case '(': {
+                value = 0;
+                break;
+            }
+            case '+': {
+                value = 1;
+                break;
+            }
+            case '-': {
+                value = 1;
+                break;
+            }
+            case '*': {
+                value = 2;
+                break;
+            }
+            case '/': {
+                value = 2;
+                break;
+            }
+            case '^': {
+                value = 3;
+                break;
+            }
+           
+
+        }
+        return value;
+
+    }
+
+
 }
