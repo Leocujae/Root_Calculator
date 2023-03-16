@@ -1,7 +1,7 @@
 
 package Root_calculator.Controller;
 
-import Evaluator.FunctionEvaluator;
+
 import Root_calculator.Factory.MethodCreator;
 import Root_calculator.Factory.TypeMethod;
 import Root_calculator.Method.Method;
@@ -24,7 +24,8 @@ public class Controller {
     private double Tolerance ;
     private TypeMethod typeMethod;
     private double[] intervalos;
-    private FunctionEvaluator evaluator;
+    
+
    
     
     private Controller() {
@@ -66,8 +67,8 @@ public class Controller {
     public void setTolerance(double Tolerance) {
         this.Tolerance = Tolerance;
     }
-    public void setTypeMethod(int index){
-        typeMethod = TypeMethod.values()[index];
+    public void setTypeMethod(TypeMethod type){
+        typeMethod = type;
     }
     public void setIntervalos(double a , double b){
         this.intervalos[0] = a;
@@ -193,4 +194,48 @@ public class Controller {
     }
 
 
+    
+    
+    public  ArrayList<Object> ConvertirFuncion( String funcion){
+         ArrayList<Object> result = new ArrayList<>();
+        
+        int i = 0;
+        
+        
+        char index;
+        char last = 'a';
+        String num ="";
+        
+        while(i < funcion.length()){
+            
+            index = funcion.charAt(i);
+            
+            if(Character.isDigit(index)){
+                num = num + index;
+            }
+            else if(index =='-' && num.isEmpty() && Character.isDigit(last) ){
+                 num = "-";
+            }
+            else{
+                if(!num.isEmpty()){
+                    result.add(num);
+                    num="";
+                }
+                result.add(String.valueOf(index));
+            }
+            last = index;
+            i++;
+        }
+         if(!num.isEmpty()){
+                    result.add(num);
+         }
+        
+        return result;
+    }
+    
+    
+    
+    
+    
+    
 }

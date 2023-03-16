@@ -4,25 +4,82 @@
  */
 package Root_calculator.Method;
 
+import Root_calculator.Controller.Controller;
+import java.util.ArrayList;
+
 /**
  *
  * @author EL_DEO
  */
-public class MRegula_falsi extends Method{
+public final class MRegula_falsi extends Method{
 
+    private double toterancia;
+    private double MidPoint;
+    private double MidPintPrev;
+    private double a;
+    private double b;
+    
+    private double fa ;
+
+    
+    
+    private ArrayList<Object> ListResult;
+    
+    
     public MRegula_falsi() {
+        
        
+       loadDate();
+       double fa = Calculo(ListResult, String.valueOf(a));
+       double fb = Calculo(ListResult, String.valueOf(b));
+       MidPoint = (fa * b - fb * a)/(fa - fb);
     }
 
+    
+    
+    private void setMidpoint(){
+        
+        MidPintPrev = MidPoint;
+        
+        double fb = Calculo(ListResult, String.valueOf(b));
+        fa = Calculo(ListResult, String.valueOf(a));
+        MidPoint = (fa*b-fb*a)/(fa-fb);
+    
+    }
+    
+    
+    
     @Override
     public double Solution() {
-      System.out.println("Clase Mregula_falsi instanciada");
-      return 0;
+     
+      boolean end = false;  
+      double Ex;
+      do{
+           Ex = Math.abs(MidPoint - MidPintPrev);
+          System.out.println(Ex);
+            if (Ex == 0) {
+                end = true;
+            } else if (fa * Calculo(ListResult, String.valueOf(MidPoint)) < 0) {
+                b = MidPoint;
+
+            } else {
+                a = MidPoint;
+            }
+
+            setMidpoint();
+
+        } while (Ex > toterancia && !end);
+        return MidPoint;
     }
 
     @Override
     public void loadDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Pendiente a mejorar
+      
+      a = Controller.getInstance().getArreglo()[0];
+      b = Controller.getInstance().getArreglo()[1];
+      toterancia = Controller.getInstance().getTolerance();
+      ListResult = Controller.getInstance().getFunction();
     }
     
 }

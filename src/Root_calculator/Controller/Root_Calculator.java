@@ -2,7 +2,7 @@
 
 package Root_calculator.Controller;
 
-import java.util.ArrayList;
+import GUI.Principal;
 
 
 /**
@@ -14,29 +14,44 @@ public class Root_Calculator {
     public static void main(String[] args) {
         
         
-        Controller x = Controller.getInstance();
+        
+        
+        Principal temp = new Principal();
+        temp.setVisible(true);
+        
+        
+        
+        
+        
 
        
         
         
         
-        ArrayList<Object> asd = new ArrayList();
-     
-       
-        asd.add("x");
-       
-       
-        //String X = "10";
         
-
-         
-        System.out.println(asd);
-        System.out.print("La raiz es aproximadamente :");
-        x.setTypeMethod(2);
-        x.setFunction(asd);
-        x.setIntervalos( -0.1, 10);
-        x.setTolerance(0.012);
-        x.getResulProblem();
+        
+        
+//        
+//        ArrayList<Object> Prueba2 = new ArrayList();
+//        Prueba2.add("e");
+//        Prueba2.add("^");
+//        Prueba2.add("(");
+//        Prueba2.add("x");
+//        Prueba2.add("*");
+//        Prueba2.add("2");
+//        Prueba2.add(")");
+//        Prueba2.add("+");
+//        Prueba2.add("x");
+//        
+//         
+//        System.out.println(Prueba2);
+//        System.out.print("La raiz es aproximadamente por metodo de Biseccion  :");
+//        x.setTypeMethod(2);
+//        x.setFunction(Prueba2);
+//        x.setIntervalos( -2, 2);
+//        x.setTolerance(0.00001);
+//        x.getResulProblem();
+        
     }
 
     

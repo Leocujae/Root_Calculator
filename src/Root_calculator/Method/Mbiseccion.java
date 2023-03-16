@@ -5,7 +5,6 @@
 package Root_calculator.Method;
 import Root_calculator.Controller.Controller;
 import java.util.ArrayList;
-import java.util.function.Function;
 
 /**
  *
@@ -48,7 +47,7 @@ public class Mbiseccion extends Method{
         while(pointAB[1] - pointAB[0] > tolerance && !end)
         {
         double fa = Calculo(ListResult,String.valueOf(pointAB[0]));
-        //double fb = function.apply(pointAB[1]);
+       
         
             if (fa * FunctionPointValue == 0) {
                 end = true;

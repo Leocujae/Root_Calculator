@@ -10,5 +10,5 @@ package Root_calculator.Factory;
  * @author EL_DEO
  */
 public enum TypeMethod { 
-    MNewton,MRegula_falsi,Mbiseccion;
+    MNewton,MRegula_falsi,Mbiseccion,MSecante;
 }
