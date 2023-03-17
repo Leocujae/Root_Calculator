@@ -4,7 +4,6 @@
  */
 package Root_calculator.Method;
 
-import Root_calculator.Controller.Controller;
 import java.util.ArrayList;
 
 /**
@@ -13,53 +12,46 @@ import java.util.ArrayList;
  */
 public final class MRegula_falsi extends Method{
 
-    private double toterancia;
+ 
     private double MidPoint;
     private double MidPintPrev;
-    private double a;
-    private double b;
-    
-    private double fa ;
-
-    
-    
-    private ArrayList<Object> ListResult;
+ 
     
     
     public MRegula_falsi() {
         
        
        loadDate();
-       double fa = Calculo(ListResult, String.valueOf(a));
-       double fb = Calculo(ListResult, String.valueOf(b));
+       double fa = CalcularFuncion(function, a);
+       double fb = CalcularFuncion(function, b);
        MidPoint = (fa * b - fb * a)/(fa - fb);
     }
-
-    
-    
     private void setMidpoint(){
         
         MidPintPrev = MidPoint;
         
-        double fb = Calculo(ListResult, String.valueOf(b));
-        fa = Calculo(ListResult, String.valueOf(a));
+        double fb = CalcularFuncion(function,b);
+        fa = CalcularFuncion(function, a);
         MidPoint = (fa*b-fb*a)/(fa-fb);
     
     }
-    
-    
-    
     @Override
-    public double Solution() {
+    public ArrayList<MethodResult> Solution() {
      
+      ArrayList<MethodResult> result = new ArrayList<>();
+      int i = 1;
+        
+        
+        
+        
       boolean end = false;  
       double Ex;
       do{
            Ex = Math.abs(MidPoint - MidPintPrev);
-          System.out.println(Ex);
+          
             if (Ex == 0) {
                 end = true;
-            } else if (fa * Calculo(ListResult, String.valueOf(MidPoint)) < 0) {
+            } else if (fa * CalcularFuncion(function, MidPoint) < 0) {
                 b = MidPoint;
 
             } else {
@@ -67,19 +59,11 @@ public final class MRegula_falsi extends Method{
             }
 
             setMidpoint();
-
+            result.add(new MethodResult(i++,MidPoint,Ex));
+            
         } while (Ex > toterancia && !end);
-        return MidPoint;
+        return result;
     }
 
-    @Override
-    public void loadDate() {
-        //Pendiente a mejorar
-      
-      a = Controller.getInstance().getArreglo()[0];
-      b = Controller.getInstance().getArreglo()[1];
-      toterancia = Controller.getInstance().getTolerance();
-      ListResult = Controller.getInstance().getFunction();
-    }
     
 }

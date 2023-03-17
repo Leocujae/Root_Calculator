@@ -4,6 +4,8 @@
  */
 package Root_calculator.Method;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author EL_DEO
@@ -14,9 +16,11 @@ public class MNewton extends Method{
     }
 
     @Override
-    public double Solution() {
+    public ArrayList<MethodResult> Solution() {
       System.out.println("Clase MNewton instanciada");
-      return 0;
+     
+      
+      return null;
     }
 
     @Override

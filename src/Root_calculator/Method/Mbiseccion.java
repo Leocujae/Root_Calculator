@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Root_calculator.Method;
-import Root_calculator.Controller.Controller;
 import java.util.ArrayList;
 
 /**
@@ -13,25 +12,22 @@ import java.util.ArrayList;
 public class Mbiseccion extends Method{
 
     private double Midpoint ;
-    private double pointAB[];
-    private double tolerance;
-    private ArrayList<Object> ListResult;
+    
+    
+   
     
    
 
     
     public Mbiseccion() {
-        
-        
-        this.ListResult = new ArrayList<>();
-        this.pointAB = new double[2];
+
         loadDate();
         setMidPoint();
        
         
     }
     private void setMidPoint(){
-        Midpoint = (pointAB[1] + pointAB[0]) /2;
+        Midpoint = (b + a) /2;
     }
     
     
@@ -39,44 +35,34 @@ public class Mbiseccion extends Method{
     
     
     @Override
-    public double Solution() {
+    public ArrayList<MethodResult> Solution() {
 
+         ArrayList<MethodResult> result = new ArrayList<>();
+         int i = 1;
+         
+         
         boolean end = false ;
-        double FunctionPointValue =Calculo(ListResult,String.valueOf(Midpoint)) ;
+        double FunctionPointValue =CalcularFuncion(function,Midpoint) ;
+        result.add(new MethodResult(i++, Midpoint, b - a));
         
-        while(pointAB[1] - pointAB[0] > tolerance && !end)
-        {
-        double fa = Calculo(ListResult,String.valueOf(pointAB[0]));
-       
-        
+        while (b - a > toterancia && !end) {
+            double fa = CalcularFuncion(function, a);
+
             if (fa * FunctionPointValue == 0) {
                 end = true;
 
             } else if (fa * FunctionPointValue > 0) {
-                pointAB[0] = Midpoint;
-                
-            } else {
-                pointAB[1] = Midpoint;
-                
-            }
-            setMidPoint();
-            FunctionPointValue = Calculo(ListResult,String.valueOf(Midpoint)) ;
-        }
-        return Midpoint;
-    }
+                a = Midpoint;
 
-    
-    @Override
-    protected final void loadDate() {
-        
-        
-        
-        ListResult = Controller.getInstance().getFunction();
-        pointAB[0] = Controller.getInstance().getArreglo()[0];
-        pointAB[1] = Controller.getInstance().getArreglo()[1];
-        tolerance = Controller.getInstance().getTolerance();
-        
+            } else {
+                b = Midpoint;
+
+            }
+
+            setMidPoint();
+            FunctionPointValue = CalcularFuncion(function, Midpoint);
+            result.add(new MethodResult(i++, Midpoint, b - a));
+        }
+        return result;
     }
-        
-    
 }

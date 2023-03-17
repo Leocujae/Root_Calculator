@@ -5,7 +5,6 @@
  */
 package Root_calculator.Method;
 
-import Root_calculator.Controller.Controller;
 import java.util.ArrayList;
 
 /**
@@ -15,14 +14,7 @@ import java.util.ArrayList;
 public final class MSecante extends Method{
 
     
-    //Datos para una herencia
-    private ArrayList<Object> ListResult;    
-    private double toterancia;    
-    private double a;
-    private double b;
-    private double fa;
-    private double fb;
-    
+   
     
     //Datos individuales
     private double m;
@@ -33,45 +25,31 @@ public final class MSecante extends Method{
         loadDate();
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     private void setM(){
         
-        fa = Calculo(ListResult, String.valueOf(a));
-        fb = Calculo(ListResult, String.valueOf(b));
+        
+        
+        fa = CalcularFuncion(function, a);
+        fb = CalcularFuncion(function, b);
          m =(fb - fa) / (b-a);
  
     }
 
     
     @Override
-    public double Solution() {
+    public ArrayList<MethodResult> Solution() {
       
-        
+        ArrayList<MethodResult> result = new ArrayList<>();
+        int i = 1;
         do{
+            
             setM();
             InTX = b-fb/m;
+            result.add(new MethodResult(i++,InTX,CalcularFuncion(function, InTX)));
         }
-        while(Calculo(ListResult, String.valueOf(InTX))>toterancia);
-        return InTX;
+        while(CalcularFuncion(function, InTX)>toterancia);
+        return result;
   
-    }
-
-    @Override
-    protected void loadDate() {
-        
-      a = Controller.getInstance().getArreglo()[0];
-      b = Controller.getInstance().getArreglo()[1];
-      toterancia = Controller.getInstance().getTolerance();
-      ListResult = Controller.getInstance().getFunction();   
-        
     }
     
 }

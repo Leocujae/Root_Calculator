@@ -1,85 +1,51 @@
 
 package Root_calculator.Method;
 
+import Root_calculator.Controller.Controller;
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import org.nfunk.jep.JEP;
 
 
 public abstract class Method {
 
-    public abstract double Solution();
-    protected abstract void loadDate();
     
     
-  
-
-    protected double Calculo(ArrayList<Object> ListResult, String Xvalue) {
-
+     JEP jep;
+    protected String function;    
+    protected double toterancia;    
+    protected double a;
+    protected double b;
+    protected double fa;
+    protected double fb;
+     
+     
+    public abstract ArrayList<MethodResult> Solution();
+    
+    
+    protected  void loadDate(){
+      jep = new JEP();
+      this.jep.addStandardFunctions();
+      this.jep.addStandardConstants();
+      a = Controller.getInstance().getArreglo()[0];
+      b = Controller.getInstance().getArreglo()[1];
+      toterancia = Controller.getInstance().getTolerance();
+      function = Controller.getInstance().getFunction();
+    }
+ 
+    protected double CalcularFuncion(String string, double Xvalue) {
+        double result = Double.NaN;
+        try{
+        jep.addVariable("x", Xvalue);
+        jep.parseExpression(string);
+        System.out.println(jep.getValue());
+        result =jep.getValue();
         
-        ArrayList<Object> InvPolacEcuation =  new ArrayList();
-        
-        ListResult.stream().forEach((element) -> {
-            if (element.equals('x')) {
-                InvPolacEcuation.add(Xvalue);
-            } else {
-                InvPolacEcuation.add(element);
-            }
-        });
-
-        
-
-        Deque<Double> temp = new LinkedList<>();
-
-        double a;
-        double b;
-
-        while (!InvPolacEcuation.isEmpty()) {
-            String num = (String) InvPolacEcuation.remove(0);
-
-            try {
-
-                temp.push(Double.valueOf(num));
-
-            } catch (Exception e) {
-                char Operator = num.charAt(0);
-
-                b = temp.pop();
-                a = temp.pop();
-                switch (Operator) {
-                    case '+': {
-
-                        temp.push(a + b);
-                        break;
-                    }
-                    case '-': {
-
-                        temp.push(a - b);
-                        break;
-                    }
-                    case '*': {
-
-                        temp.push(a * b);
-                        break;
-                    }
-                    case '/': {
-
-                        temp.push(a / b);
-                        break;
-                    }
-                    case '^': {
-
-                        temp.push(Math.pow(a, b));
-
-                        break;
-                    }
-                }
-
-            }
-
+        }catch(Exception e){
+           
         }
-
-        return temp.pop();
+        
+        return result;
     }
 
     
