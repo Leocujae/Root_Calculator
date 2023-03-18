@@ -23,15 +23,21 @@ public abstract class Method {
     public abstract ArrayList<MethodResult> Solution();
     
     
-    protected  void loadDate(){
-      DJep = new DJep();
-      this.DJep.addStandardFunctions();
-      this.DJep.addStandardConstants();
-      a = Controller.getInstance().getArreglo()[0];
-      b = Controller.getInstance().getArreglo()[1];
-      toterancia = Controller.getInstance().getTolerance();
-      function = Controller.getInstance().getFunction();
-      
+    protected void loadDate() {
+        DJep = new DJep();
+        this.DJep.addStandardFunctions();
+        this.DJep.addStandardConstants();
+        this.DJep.addComplex();
+        this.DJep.setAllowUndeclared(true);
+        this.DJep.setAllowAssignment(true);
+        this.DJep.setImplicitMul(true);
+        this.DJep.addStandardDiffRules();
+
+        a = Controller.getInstance().getArreglo()[0];
+        b = Controller.getInstance().getArreglo()[1];
+        toterancia = Controller.getInstance().getTolerance();
+        function = Controller.getInstance().getFunction();
+
     }
  
     protected double CalcularFuncion(String string, double Xvalue) {
