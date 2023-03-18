@@ -74,9 +74,14 @@ public class Controller {
         this.function = function;
     }
     
-    public void Resolver(){
+    public void Resolver() throws Exception{
+        
+        try{
         MethodCreator Creator = new MethodCreator();
         Solution =  ((Method)Creator.CreateMethod(typeMethod)).Solution();
+        }catch(Exception e){
+            throw new Exception("Nombre de clase incorrecto");
+        }
     }
 
 }

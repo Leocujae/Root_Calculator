@@ -5,6 +5,8 @@
 package Root_calculator.Method;
 
 import java.util.ArrayList;
+import org.lsmp.djep.djep.DJep;
+import org.nfunk.jep.Node;
 
 /**
  *
@@ -12,20 +14,40 @@ import java.util.ArrayList;
  */
 public class MNewton extends Method{
 
+    private String Derivada;
+    private double X;
+    private DJep djep;
+    private Node nodoFuncion;
+    private Node nodoDerivada;
+    
+    
     public MNewton() {
+        djep = new DJep(); 
     }
 
     @Override
     public ArrayList<MethodResult> Solution() {
-      System.out.println("Clase MNewton instanciada");
+    
      
+        
       
       return null;
     }
 
+    
+    
+    
+     
+    
+    
+    
+    
     @Override
     public void loadDate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        
+        
+        
     }
     
 }

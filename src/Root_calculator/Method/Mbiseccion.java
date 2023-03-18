@@ -29,11 +29,6 @@ public class Mbiseccion extends Method{
     private void setMidPoint(){
         Midpoint = (b + a) /2;
     }
-    
-    
-    
-    
-    
     @Override
     public ArrayList<MethodResult> Solution() {
 

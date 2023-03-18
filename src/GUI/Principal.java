@@ -10,9 +10,7 @@ import Root_calculator.Factory.TypeMethod;
 import Root_calculator.Method.MethodResult;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -57,7 +55,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MN-2023");
+        setBackground(new java.awt.Color(0, 204, 204));
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTextPane1.setBackground(new java.awt.Color(204, 204, 204));
         jTextPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Descripción del método"));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTextPane1, org.jdesktop.beansbinding.ELProperty.create("false"), jTextPane1, org.jdesktop.beansbinding.BeanProperty.create("editable"));
@@ -65,12 +69,14 @@ public class Principal extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jTextPane1);
 
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Metodos para calculo de raices"));
 
         buttonGroup1.add(jRBisepccion);
         jRBisepccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRBisepccion.setForeground(new java.awt.Color(51, 51, 51));
+        jRBisepccion.setForeground(new java.awt.Color(255, 255, 255));
         jRBisepccion.setText("Bisepcción ");
+        jRBisepccion.setOpaque(false);
         jRBisepccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBisepccionActionPerformed(evt);
@@ -79,8 +85,9 @@ public class Principal extends javax.swing.JFrame {
 
         buttonGroup1.add(jRRegulaFalsi);
         jRRegulaFalsi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRRegulaFalsi.setForeground(new java.awt.Color(51, 51, 51));
+        jRRegulaFalsi.setForeground(new java.awt.Color(255, 255, 255));
         jRRegulaFalsi.setText("Regula Falsi");
+        jRRegulaFalsi.setOpaque(false);
         jRRegulaFalsi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRRegulaFalsiActionPerformed(evt);
@@ -89,8 +96,9 @@ public class Principal extends javax.swing.JFrame {
 
         buttonGroup1.add(jRNewton);
         jRNewton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRNewton.setForeground(new java.awt.Color(51, 51, 51));
+        jRNewton.setForeground(new java.awt.Color(255, 255, 255));
         jRNewton.setText("Newton");
+        jRNewton.setOpaque(false);
         jRNewton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRNewtonActionPerformed(evt);
@@ -99,8 +107,9 @@ public class Principal extends javax.swing.JFrame {
 
         buttonGroup1.add(jRSecante);
         jRSecante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jRSecante.setForeground(new java.awt.Color(51, 51, 51));
+        jRSecante.setForeground(new java.awt.Color(255, 255, 255));
         jRSecante.setText("Secante");
+        jRSecante.setOpaque(false);
         jRSecante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRSecanteActionPerformed(evt);
@@ -133,8 +142,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jRSecante))
         );
 
-        jTable1.setBackground(new java.awt.Color(204, 255, 255));
+        jTable1.setBackground(new java.awt.Color(51, 51, 51));
         jTable1.setFont(new java.awt.Font("Nirmala UI", 1, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 255, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -148,7 +158,8 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        funcion.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        funcion.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
+        funcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         funcion.setAlignmentX(2.0F);
         funcion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
         funcion.addActionListener(new java.awt.event.ActionListener() {
@@ -184,12 +195,15 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Función");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tolerancia");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Intervalos");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -299,7 +313,10 @@ public class Principal extends javax.swing.JFrame {
         x.setTolerance(temptolerancia);
         x.setIntervalos(a, b);
         x.setTypeMethod(type);
+        
+        try{
         x.Resolver();
+           
         ArrayList<MethodResult> solution = x.getSolution();
         DefaultTableModel model = new DefaultTableModel();
         String row[] = {"Iteracion","Valor de x" ,"Error"};
@@ -313,17 +330,16 @@ public class Principal extends javax.swing.JFrame {
             model.addRow(row);
         }
 
-          jTable1.setModel(model);
-//        DefaultTableCellRenderer tablerender = new DefaultTableCellHeaderRenderer();
-//     
-//        tablerender.setHorizontalTextPosition(DefaultTableCellRenderer.CENTER);
-//        jTable1.getColumnModel().getColumn(0).getCellRenderer()
-//        jTable1.getColumnModel().getColumn(1).setCellRenderer(tablerender);
-//        jTable1.getColumnModel().getColumn(2).setCellRenderer(tablerender);
-        
+        jTable1.setModel(model);
         jTable1.setVisible(true);
-
         JOptionPane.showMessageDialog(rootPane, "Resultado calculado con éxito");
+
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(rootPane, "Se ha encontrado un error");
+        }
+
+
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActionPerformed
