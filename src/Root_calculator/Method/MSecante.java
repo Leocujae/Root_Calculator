@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author EL_DEO
  */
-public final class MSecante extends Method{
+public final class MSecante extends MethodIntervalos{
 
     
    
@@ -40,14 +40,25 @@ public final class MSecante extends Method{
     public ArrayList<MethodResult> Solution() {
       
         ArrayList<MethodResult> result = new ArrayList<>();
-        int i = 1;
+       
+        int iteraciones = 20;
+        double last = Double.NaN;
+        boolean end = false;
         do{
             
             setM();
             InTX = b-fb/m;
-            result.add(new MethodResult(i++,InTX,CalcularFuncion(function, InTX)));
+            if(InTX != last ){
+            result.add(new MethodResult(InTX,CalcularFuncion(function, InTX)));
+            iteraciones--;
+            last = InTX;
+            }
+            else{
+                end = true;
+            }
+            
         }
-        while(CalcularFuncion(function, InTX)>toterancia);
+        while(CalcularFuncion(function, InTX)>toterancia && iteraciones > 0 && !end);
         return result;
   
     }

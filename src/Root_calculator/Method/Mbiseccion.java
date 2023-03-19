@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author EL_DEO
  */
-public class Mbiseccion extends Method{
+public class Mbiseccion extends MethodIntervalos{
 
     private double Midpoint ;
     
@@ -22,7 +22,7 @@ public class Mbiseccion extends Method{
     public Mbiseccion() {
 
         loadDate();
-        setMidPoint();
+        
        
         
     }
@@ -31,16 +31,16 @@ public class Mbiseccion extends Method{
     }
     @Override
     public ArrayList<MethodResult> Solution() {
-
-         ArrayList<MethodResult> result = new ArrayList<>();
-         int i = 1;
-         
-         
         boolean end = false ;
+        ArrayList<MethodResult> result = new ArrayList<>();
+       
+         
+        setMidPoint(); 
         double FunctionPointValue =CalcularFuncion(function,Midpoint) ;
-        result.add(new MethodResult(i++, Midpoint, b - a));
+        double Em = (b- a) /2;
+        result.add(new MethodResult(Midpoint,Em));
         
-        while (b - a > toterancia && !end) {
+        while (Em > toterancia && !end) {
             double fa = CalcularFuncion(function, a);
 
             if (fa * FunctionPointValue == 0) {
@@ -55,8 +55,10 @@ public class Mbiseccion extends Method{
             }
 
             setMidPoint();
+            Em = (b- a) /2;
             FunctionPointValue = CalcularFuncion(function, Midpoint);
-            result.add(new MethodResult(i++, Midpoint, b - a));
+            result.add(new MethodResult(Midpoint, Em));
+            
         }
         return result;
     }

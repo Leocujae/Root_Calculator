@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author EL_DEO
  */
-public final class MRegula_falsi extends Method{
+public final class MRegula_falsi extends MethodIntervalos{
 
  
     private double MidPoint;
@@ -39,8 +39,7 @@ public final class MRegula_falsi extends Method{
     public ArrayList<MethodResult> Solution() {
      
       ArrayList<MethodResult> result = new ArrayList<>();
-      int i = 1;
-        
+    
         
         
         
@@ -59,7 +58,7 @@ public final class MRegula_falsi extends Method{
             }
 
             setMidpoint();
-            result.add(new MethodResult(i++,MidPoint,Ex));
+            result.add(new MethodResult(MidPoint,Ex));
             
         } while (Ex > toterancia && !end);
         return result;

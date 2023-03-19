@@ -4,48 +4,85 @@
  */
 package Root_calculator.Method;
 
+import Root_calculator.Controller.Controller;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.Node;
+import org.nfunk.jep.ParseException;
 
 /**
  *
  * @author EL_DEO
  */
-public class MNewton extends Method{
+public final class MNewton extends Method{
 
     private String Derivada;
-    private double X;
-    private DJep djep;
-    private Node nodoFuncion;
-    private Node nodoDerivada;
+    private double x;
+    
     
     
     public MNewton() {
-        djep = new DJep(); 
+        DJep = new DJep(); 
+        loadDate();
     }
 
     @Override
     public ArrayList<MethodResult> Solution() {
-    
-     
         
-      
-      return null;
+        
+        
+        double x1 = 0;
+
+        ArrayList<MethodResult> result = new ArrayList<>();
+        int i = 0;
+
+        double Em = x;
+        
+        
+         do{
+             x1 = x-CalcularFuncion(function,x)/CalcularFuncion(Derivada,x);
+             Em = Math.abs(x1-x);
+             result.add(new MethodResult(x, Em));
+             x = x1;
+             
+             
+             
+         }while(Em > toterancia && i < 15);
+
+      return result;
     }
 
-    
-    
-    
-     
-    
-    
-    
+
     
     @Override
     public void loadDate() {
-    
         
+        DJep = new DJep();
+        this.DJep.addStandardFunctions();
+        this.DJep.addStandardConstants();
+        this.DJep.addComplex();
+        this.DJep.setAllowUndeclared(true);
+        this.DJep.setAllowAssignment(true);
+        this.DJep.setImplicitMul(true);
+        this.DJep.addStandardDiffRules();
+        
+        
+        function = Controller.getInstance().getFunction();
+        x = 0;
+        Node nodoFuncion;
+        Node nodoDerivada;
+        try {
+
+            nodoFuncion = this.DJep.parse(function);
+            Node DF = this.DJep.differentiate(nodoFuncion,"x");
+            nodoDerivada = this.DJep.simplify(DF);
+            this.Derivada = this.DJep.toString(nodoDerivada);
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(MNewton.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }

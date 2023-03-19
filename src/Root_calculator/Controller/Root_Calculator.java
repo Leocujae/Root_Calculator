@@ -3,6 +3,7 @@
 package Root_calculator.Controller;
 
 import GUI.Principal;
+import javafx.stage.Stage;
 
 
 /**
@@ -13,8 +14,7 @@ public class Root_Calculator {
 
     public static void main(String[] args) {
         
-        
-        
+  
         
         Principal temp = new Principal();
         temp.setVisible(true);

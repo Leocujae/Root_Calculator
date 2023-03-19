@@ -5,16 +5,8 @@
         <group>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/Principal.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Controller/Root_Calculator.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Factory/FactoryMethod.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/MN-23.png</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/MRegula_falsi.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/MSecante.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Factory/MethodCreator.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/Method.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/Mbiseccion.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Controller/Controller.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Factory/TypeMethod.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/MNewton.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/Graficadora/Plano.java</file>
         </group>
     </open-files>
 </project-private>
