@@ -1,6 +1,8 @@
 
 package Root_calculator.Method;
 
+import java.text.DecimalFormat;
+
 
 public class MethodResult {
     
@@ -11,7 +13,14 @@ public class MethodResult {
 
     public MethodResult( Double Xvalue, Double Em) {
      
-        this.Xvalue = String.valueOf(Xvalue);
+       
+        
+        
+        DecimalFormat formato = new DecimalFormat("#.#####");
+        
+        
+        
+        this.Xvalue = String.valueOf(formato.format(Xvalue));
         this.Em = String.valueOf(Em);
     }
 

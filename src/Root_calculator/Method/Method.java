@@ -13,7 +13,7 @@ public abstract class Method {
     DJep DJep;
     protected String function;    
     protected double toterancia;    
-   
+    protected int MaxIter;
      
      
     public abstract ArrayList<MethodResult> Solution();
@@ -30,6 +30,8 @@ public abstract class Method {
         this.DJep.setImplicitMul(true);
         this.DJep.addStandardDiffRules();
 
+        
+        MaxIter = 80;
         toterancia = Controller.getInstance().getTolerance();
         function = Controller.getInstance().getFunction();
     }

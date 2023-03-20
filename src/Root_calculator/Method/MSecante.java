@@ -41,16 +41,17 @@ public final class MSecante extends MethodIntervalos{
       
         ArrayList<MethodResult> result = new ArrayList<>();
        
-        int iteraciones = 20;
+       
         double last = Double.NaN;
         boolean end = false;
+        int i = 0;
         do{
             
             setM();
             InTX = b-fb/m;
             if(InTX != last ){
             result.add(new MethodResult(InTX,CalcularFuncion(function, InTX)));
-            iteraciones--;
+            i++;
             last = InTX;
             }
             else{
@@ -58,7 +59,7 @@ public final class MSecante extends MethodIntervalos{
             }
             
         }
-        while(CalcularFuncion(function, InTX)>toterancia && iteraciones > 0 && !end);
+        while(CalcularFuncion(function, InTX)>toterancia && i < MaxIter && !end);
         return result;
   
     }

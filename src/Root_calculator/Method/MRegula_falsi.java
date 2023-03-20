@@ -45,6 +45,7 @@ public final class MRegula_falsi extends MethodIntervalos{
         
       boolean end = false;  
       double Ex;
+      int i = 0;
       do{
            Ex = Math.abs(MidPoint - MidPintPrev);
           
@@ -59,8 +60,8 @@ public final class MRegula_falsi extends MethodIntervalos{
 
             setMidpoint();
             result.add(new MethodResult(MidPoint,Ex));
-            
-        } while (Ex > toterancia && !end);
+            i++;
+        } while (Ex > toterancia && !end && i<MaxIter);
         return result;
     }
 

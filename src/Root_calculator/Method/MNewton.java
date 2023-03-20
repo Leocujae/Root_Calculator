@@ -39,8 +39,7 @@ public final class MNewton extends Method{
         int i = 0;
 
         double Em = x;
-        
-        
+
          do{
              x1 = x-CalcularFuncion(function,x)/CalcularFuncion(Derivada,x);
              Em = Math.abs(x1-x);
@@ -48,8 +47,8 @@ public final class MNewton extends Method{
              x = x1;
              
              
-             
-         }while(Em > toterancia && i < 15);
+             i++;
+         }while(Em > toterancia && i < MaxIter);
 
       return result;
     }
@@ -69,8 +68,10 @@ public final class MNewton extends Method{
         this.DJep.addStandardDiffRules();
         
         
+        MaxIter = 80;
+        toterancia = Controller.getInstance().getTolerance();
         function = Controller.getInstance().getFunction();
-        x = 0;
+        x = Controller.getInstance().getArreglo()[0];
         Node nodoFuncion;
         Node nodoDerivada;
         try {

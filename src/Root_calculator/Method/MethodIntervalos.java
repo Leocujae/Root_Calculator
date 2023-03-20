@@ -19,6 +19,7 @@ public abstract class MethodIntervalos extends Method{
     protected double fb;
     
     
+    
     @Override
      protected void loadDate(){
         super.loadDate();
@@ -26,7 +27,7 @@ public abstract class MethodIntervalos extends Method{
 
         a = Controller.getInstance().getArreglo()[0];
         b = Controller.getInstance().getArreglo()[1];
-      
+        //toterancia = Controller.getInstance().getTolerance();
 
     }
     

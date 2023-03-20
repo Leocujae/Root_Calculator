@@ -24,7 +24,7 @@ public class Controller {
     private TypeMethod typeMethod;
     private double[] intervalos;
     private ArrayList<MethodResult> Solution;
-    
+   
    
     
     private Controller() {
@@ -62,9 +62,10 @@ public class Controller {
     public void setTypeMethod(TypeMethod type){
         typeMethod = type;
     }
-    public void setIntervalos(double a , double b){
+    public void setIntervalos(double a , double b ){
         this.intervalos[0] = a;
         this.intervalos[1] = b;
+       
     }
     public ArrayList<MethodResult> getSolution(){
         return  Solution;

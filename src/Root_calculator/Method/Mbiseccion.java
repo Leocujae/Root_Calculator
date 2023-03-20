@@ -26,26 +26,29 @@ public class Mbiseccion extends MethodIntervalos{
        
         
     }
-    private void setMidPoint(){
-        Midpoint = (b + a) /2;
-    }
+   
     @Override
     public ArrayList<MethodResult> Solution() {
         boolean end = false ;
         ArrayList<MethodResult> result = new ArrayList<>();
        
          
-        setMidPoint(); 
-        double FunctionPointValue =CalcularFuncion(function,Midpoint) ;
-        double Em = (b- a) /2;
-        result.add(new MethodResult(Midpoint,Em));
+       
         
-        while (Em > toterancia && !end) {
+        double Em ;
+       
+        
+        int i = 0;
+        do{
+            
+            
+            Midpoint = (b+a)/2;
+            Em = (b- a)/2;
+            double FunctionPointValue =CalcularFuncion(function,Midpoint) ;
             double fa = CalcularFuncion(function, a);
-
-            if (fa * FunctionPointValue == 0) {
+            if (FunctionPointValue == 0 || Em < toterancia ) {
                 end = true;
-
+                Em = 0;
             } else if (fa * FunctionPointValue > 0) {
                 a = Midpoint;
 
@@ -54,12 +57,15 @@ public class Mbiseccion extends MethodIntervalos{
 
             }
 
-            setMidPoint();
-            Em = (b- a) /2;
-            FunctionPointValue = CalcularFuncion(function, Midpoint);
+            
+           
             result.add(new MethodResult(Midpoint, Em));
             
-        }
+            i++;
+        }while (!end && i < MaxIter);
+            
+            
+        
         return result;
     }
 }
