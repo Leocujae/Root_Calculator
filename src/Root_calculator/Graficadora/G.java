@@ -48,11 +48,14 @@ public class G {
     }
     
     public void crearGrafica(String ID , double[] x , double[] y){
-        datos.removeAllSeries();
+       
         this.AgregarGrafica(ID, x, y);
     }
     public JPanel DibujarGrafica(){
         return new ChartPanel(grafica); 
     }
- 
+    public void Limpiar(){
+         datos.removeAllSeries();
+    }
+    
 }

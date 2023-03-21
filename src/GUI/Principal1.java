@@ -12,6 +12,7 @@ import Root_calculator.Graficadora.G;
 import Root_calculator.Method.MethodResult;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,6 +39,7 @@ public class Principal1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -46,7 +48,7 @@ public class Principal1 extends javax.swing.JFrame {
         jRNewton = new javax.swing.JRadioButton();
         jRSecante = new javax.swing.JRadioButton();
         Funcion = new javax.swing.JTextField();
-        jPanel3 = grafica.DibujarGrafica();
+        jPanelGrafica = grafica.DibujarGrafica();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
@@ -82,7 +84,8 @@ public class Principal1 extends javax.swing.JFrame {
         jPanel6.setOpaque(false);
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jRBisepccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buttonGroup1.add(jRBisepccion);
+        jRBisepccion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jRBisepccion.setForeground(new java.awt.Color(255, 255, 255));
         jRBisepccion.setText("Bisección ");
         jRBisepccion.setOpaque(false);
@@ -93,7 +96,8 @@ public class Principal1 extends javax.swing.JFrame {
         });
         jPanel6.add(jRBisepccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 54, 144, -1));
 
-        jRRegulaFalsi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buttonGroup1.add(jRRegulaFalsi);
+        jRRegulaFalsi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jRRegulaFalsi.setForeground(new java.awt.Color(255, 255, 255));
         jRRegulaFalsi.setText("Regula Falsi");
         jRRegulaFalsi.setOpaque(false);
@@ -104,7 +108,8 @@ public class Principal1 extends javax.swing.JFrame {
         });
         jPanel6.add(jRRegulaFalsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 82, -1, -1));
 
-        jRNewton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buttonGroup1.add(jRNewton);
+        jRNewton.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jRNewton.setForeground(new java.awt.Color(255, 255, 255));
         jRNewton.setText("Newton");
         jRNewton.setOpaque(false);
@@ -115,7 +120,8 @@ public class Principal1 extends javax.swing.JFrame {
         });
         jPanel6.add(jRNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 29, -1, -1));
 
-        jRSecante.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buttonGroup1.add(jRSecante);
+        jRSecante.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jRSecante.setForeground(new java.awt.Color(255, 255, 255));
         jRSecante.setText("Secante");
         jRSecante.setOpaque(false);
@@ -141,18 +147,18 @@ public class Principal1 extends javax.swing.JFrame {
         });
         jPanel2.add(Funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 190, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelGraficaLayout = new javax.swing.GroupLayout(jPanelGrafica);
+        jPanelGrafica.setLayout(jPanelGraficaLayout);
+        jPanelGraficaLayout.setHorizontalGroup(
+            jPanelGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 370, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelGraficaLayout.setVerticalGroup(
+            jPanelGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 350, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 370, 350));
+        jPanel2.add(jPanelGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 370, 350));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setForeground(new java.awt.Color(0, 204, 0));
@@ -199,10 +205,10 @@ public class Principal1 extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 600, 270));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 180, 10));
 
-        Tolerancia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Tolerancia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Tolerancia.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         Tolerancia.setText("0.002");
-        jPanel2.add(Tolerancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 70, -1));
+        jPanel2.add(Tolerancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 70, 25));
 
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -214,12 +220,17 @@ public class Principal1 extends javax.swing.JFrame {
         jLabel3.setText("Tolerancia");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 80, 30));
 
+        B.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        B.setText("2");
         B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BActionPerformed(evt);
             }
         });
         jPanel2.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 40, 25));
+
+        A.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        A.setText("-2");
         jPanel2.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 40, 25));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -283,7 +294,7 @@ public class Principal1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,7 +384,10 @@ public class Principal1 extends javax.swing.JFrame {
     }//GEN-LAST:event_BActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+       
+        grafica.Limpiar();
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -446,6 +460,7 @@ public class Principal1 extends javax.swing.JFrame {
     private javax.swing.JTextField D;
     private javax.swing.JTextField Funcion;
     private javax.swing.JTextField Tolerancia;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -454,8 +469,8 @@ public class Principal1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanelGrafica;
     private javax.swing.JRadioButton jRBisepccion;
     private javax.swing.JRadioButton jRNewton;
     private javax.swing.JRadioButton jRRegulaFalsi;
