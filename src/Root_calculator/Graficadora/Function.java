@@ -1,8 +1,6 @@
 
 package Root_calculator.Graficadora;
 
-import com.bestcode.mathparser.IMathParser;
-import com.bestcode.mathparser.MathParserFactory;
 import org.lsmp.djep.djep.DJep;
 
 
