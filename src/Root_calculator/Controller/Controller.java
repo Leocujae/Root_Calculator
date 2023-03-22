@@ -71,6 +71,8 @@ public class Controller {
         return  Solution;
     }
     
+   
+    
     public void setFunction(String function){
         this.function = function;
     }

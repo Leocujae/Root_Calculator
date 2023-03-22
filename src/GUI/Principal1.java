@@ -11,8 +11,9 @@ import Root_calculator.Graficadora.Function;
 import Root_calculator.Graficadora.G;
 import Root_calculator.Method.MethodResult;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,12 +65,12 @@ public class Principal1 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         B1 = new javax.swing.JTextField();
         A1 = new javax.swing.JTextField();
+        jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MN-2023");
         setMaximumSize(new java.awt.Dimension(650, 800));
         setMinimumSize(new java.awt.Dimension(650, 800));
-        setPreferredSize(new java.awt.Dimension(650, 800));
         setResizable(false);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(650, 800));
@@ -231,6 +232,16 @@ public class Principal1 extends javax.swing.JFrame {
 
         A.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         A.setText("-2");
+        A.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AMouseClicked(evt);
+            }
+        });
+        A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AActionPerformed(evt);
+            }
+        });
         jPanel2.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 40, 25));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -288,6 +299,10 @@ public class Principal1 extends javax.swing.JFrame {
         A1.setMaximumSize(new java.awt.Dimension(6, 20));
         jPanel2.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 40, 30));
 
+        jLabelError.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        jLabelError.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel2.add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 424, 470, 30));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 800));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,7 +353,7 @@ public class Principal1 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
-        
+        if(type != null){
         
         String tempfuncion = Funcion.getText();
         double temptolerancia = Double.valueOf(Tolerancia.getText());
@@ -350,32 +365,52 @@ public class Principal1 extends javax.swing.JFrame {
         x.setIntervalos(a, b);
         x.setTypeMethod(type);
         
-        try{
-        x.Resolver();
-
-        ArrayList<MethodResult> solution = x.getSolution();
-        DefaultTableModel model = new DefaultTableModel();
-        String row[] = {"Iteracion","Valor de x" ,"Error"};
         
-        model.setColumnIdentifiers(row);
-              
-        for (int i = 0; i < solution.size(); i++) {
-         
-            row[0] = String.valueOf(i+1);
-            row[1] = solution.get(i).getXvalue();
-            row[2] = solution.get(i).getEm();
-            model.addRow(row);
+        Function e = new Function(tempfuncion);
+        try {
+            if (e.eval(a) * e.eval(b) < 0) {
+                 jLabelError.setVisible(false);
+                x.Resolver();
+
+                ArrayList<MethodResult> solution = x.getSolution();
+                DefaultTableModel model = new DefaultTableModel();
+                String row[] = {"Iteracion", "Valor de x", "Error"};
+
+                model.setColumnIdentifiers(row);
+
+                for (int i = 0; i < solution.size(); i++) {
+
+                    row[0] = String.valueOf(i + 1);
+                    row[1] = solution.get(i).getXvalue();
+                    row[2] = solution.get(i).getEm();
+                    model.addRow(row);
+                }
+
+                jTable1.setModel(model);
+                jTable1.setVisible(true);
+                jScrollPane1.setVisible(true);
+                JOptionPane.showMessageDialog(rootPane, "Resultado calculado con éxito");
+
+            }
+            else{
+                jLabelError.setText("En el intervalo dado la funcion no sufre cambio de monotonía");
+                jLabelError.setVisible(true);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(rootPane, "Se ha encontrado un error");
+        }
+        }
+        else{
+            jLabelError.setText("Seleccione el método a utilizar");
+            jLabelError.setVisible(true);
         }
         
         
-        jTable1.setModel(model);
-        jTable1.setVisible(true);
-        jScrollPane1.setVisible(true);
-        JOptionPane.showMessageDialog(rootPane, "Resultado calculado con éxito");
-
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(rootPane, "Se ha encontrado un error");
-        }
+        
+        
+        
+        
+       
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -416,6 +451,14 @@ public class Principal1 extends javax.swing.JFrame {
     private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_B1ActionPerformed
+
+    private void AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AActionPerformed
+     
+    }//GEN-LAST:event_AActionPerformed
+
+    private void AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AMouseClicked
+         jLabelError.setVisible(false);
+    }//GEN-LAST:event_AMouseClicked
 
     /**
      * @param args the command line arguments
@@ -467,6 +510,7 @@ public class Principal1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;

@@ -7,8 +7,6 @@ import org.lsmp.djep.djep.DJep;
 public class Function {
     
     
-   
-    //private IMathParser parser =  MathParserFactory.create();
     String definition;
     DJep DJep ;
     public Function(String definition) {
@@ -24,11 +22,7 @@ public class Function {
         DJep.addStandardDiffRules();
         
         
-        
-        
-        
-//        
-//        parser.setExpression(definition);
+   
     }
 
     public double eval(double x) throws Exception {
