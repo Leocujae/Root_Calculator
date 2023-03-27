@@ -3,17 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/Lagrang.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/MSecante.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/MRegula_falsi.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/MethodIntervalos.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Interpolacion_de_funcionesr/Method/Lagrang.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Graficadora/G.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Factory/MethodCreator.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Controller/Controller.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Graficadora/Function.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Calculo_De_Raices/Method/Mbiseccion.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Calculo_De_Raices/Method/MethodIntervalos.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Calculo_De_Raices/Method/MNewton.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Calculo_De_Raices/Method/Method.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Calculo_De_Raices/Method/MRegula_falsi.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/Principal1.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Graficadora/Function.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/Method.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Graficadora/G.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/Mbiseccion.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Controller/Controller.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_calculator/Method/MNewton.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Calculo_De_Raices/Method/MSecante.java</file>
         </group>
     </open-files>
 </project-private>

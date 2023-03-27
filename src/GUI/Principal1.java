@@ -5,14 +5,16 @@
  */
 package GUI;
 
-import Root_calculator.Method.Lagrang;
-import Root_calculator.Controller.Controller;
-import Root_calculator.Factory.TypeMethod;
-import Root_calculator.Graficadora.Function;
-import Root_calculator.Graficadora.G;
-import Root_calculator.Method.MethodResult;
+import Interpolacion_de_funcionesr.Method.Lagrang;
+import Controller.Controller;
+import Factory.TypeMethod;
+import Graficadora.Function;
+import Graficadora.G;
+import Calculo_De_Raices.Method.MethodResult;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,7 +29,7 @@ public class Principal1 extends javax.swing.JFrame {
     G grafica = new G("Graficadora", "Eje X", "Eje Y");
     public Principal1() {
         initComponents();
-        
+        CentrarTabla();
     }
 
     /**
@@ -74,6 +76,9 @@ public class Principal1 extends javax.swing.JFrame {
         TablaValores = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        Pizarra = new javax.swing.JTextArea();
+        Valor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MN-2023");
@@ -315,25 +320,12 @@ public class Principal1 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Calcular Raices", jPanel1);
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
         jSpinnerGrado.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
-        jSpinnerGrado.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-                jSpinnerGradoAncestorMoved(evt);
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jSpinnerGradoAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         jSpinnerGrado.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSpinnerGradoStateChanged(evt);
-            }
-        });
-        jSpinnerGrado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jSpinnerGradoMouseClicked(evt);
             }
         });
 
@@ -344,20 +336,28 @@ public class Principal1 extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabla de nodos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Black", 0, 14))); // NOI18N
 
+        TablaValores.setBackground(new java.awt.Color(0, 0, 0));
+        TablaValores.setFont(new java.awt.Font("Roboto", 1, 11)); // NOI18N
+        TablaValores.setForeground(new java.awt.Color(0, 255, 0));
         TablaValores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {}
+                {"1", "2"},
+                {"2.72", "7.39"}
             },
             new String [] {
-
+                "X0", "X1"
             }
         ));
+        TablaValores.setGridColor(new java.awt.Color(0, 255, 204));
         TablaValores.setRowHeight(24);
+        TablaValores.setRowSelectionAllowed(false);
+        TablaValores.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        TablaValores.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(TablaValores);
 
         jTextField1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Función ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12))); // NOI18N
+        jTextField1.setOpaque(false);
 
         jButton4.setText("Calcular");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -365,6 +365,19 @@ public class Principal1 extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        Pizarra.setBackground(new java.awt.Color(0, 0, 0));
+        Pizarra.setColumns(20);
+        Pizarra.setFont(new java.awt.Font("Roboto Condensed", 0, 24)); // NOI18N
+        Pizarra.setForeground(new java.awt.Color(0, 255, 0));
+        Pizarra.setRows(5);
+        jScrollPane4.setViewportView(Pizarra);
+
+        Valor.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        Valor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Valor.setText("1.5");
+        Valor.setBorder(javax.swing.BorderFactory.createTitledBorder("Valor a calcular"));
+        Valor.setOpaque(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -374,16 +387,20 @@ public class Principal1 extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator1)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jSpinnerGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jSpinnerGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -398,11 +415,15 @@ public class Principal1 extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(Valor))
+                .addGap(36, 36, 36)
                 .addComponent(jButton4)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(214, 214, 214))
         );
 
         jTabbedPane1.addTab("Interpolar Funciones", jPanel3);
@@ -530,8 +551,7 @@ public class Principal1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        
+
         String def = Funcion.getText();
         double x0 = Double.parseDouble(A1.getText());
         double xn = Double.parseDouble(B1.getText());
@@ -564,21 +584,6 @@ public class Principal1 extends javax.swing.JFrame {
          jLabelError.setVisible(false);
     }//GEN-LAST:event_AMouseClicked
 
-    private void jSpinnerGradoAncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jSpinnerGradoAncestorMoved
-        
-      
-        
-        
-    }//GEN-LAST:event_jSpinnerGradoAncestorMoved
-
-    private void jSpinnerGradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSpinnerGradoMouseClicked
-      
-    }//GEN-LAST:event_jSpinnerGradoMouseClicked
-
-    private void jSpinnerGradoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jSpinnerGradoAncestorAdded
- 
-    }//GEN-LAST:event_jSpinnerGradoAncestorAdded
-
     private void jSpinnerGradoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerGradoStateChanged
         
         DefaultTableModel modelo = (DefaultTableModel) TablaValores.getModel();
@@ -587,7 +592,6 @@ public class Principal1 extends javax.swing.JFrame {
        
         if(columnas < nodos){
         for(int i = columnas ; i < nodos ; i++){
-            
             modelo.addColumn("X"+i);
         }
         }
@@ -595,7 +599,7 @@ public class Principal1 extends javax.swing.JFrame {
             modelo.setColumnCount(nodos);
         }
         
-        
+        this.CentrarTabla();
         
     }//GEN-LAST:event_jSpinnerGradoStateChanged
 
@@ -615,7 +619,18 @@ public class Principal1 extends javax.swing.JFrame {
            Y.add(Double.valueOf((String)TablaValores.getValueAt(1, i))); 
         }
         Lagrang temp = new Lagrang(X, Y);
-        System.out.println(temp.CalcularPL(1.5));
+        double result = temp.CalcularPL(Double.valueOf(Valor.getText()));
+        
+        
+        ArrayList<String> Polis =  temp.getPolinomios();
+        String text ="";
+        for(int i = 0 ; i < Polis.size() ; i++){
+          text =text +"L("+i+") = "+ Polis.get(i) +"\n";
+            
+        }
+        
+        text = text + "P(X) = " + temp.GetPolinomio() +"\n" +"P("+Valor.getText()+") = " +  result;
+        Pizarra.setText(text);
         
         
         
@@ -663,8 +678,10 @@ public class Principal1 extends javax.swing.JFrame {
     private javax.swing.JTextField B1;
     private javax.swing.JTextField D;
     private javax.swing.JTextField Funcion;
+    private javax.swing.JTextArea Pizarra;
     private javax.swing.JTable TablaValores;
     private javax.swing.JTextField Tolerancia;
+    private javax.swing.JTextField Valor;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -686,6 +703,7 @@ public class Principal1 extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRSecante;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSpinner jSpinnerGrado;
@@ -693,4 +711,25 @@ public class Principal1 extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+    private void CentrarTabla() {
+
+        DefaultTableCellRenderer centrar = new DefaultTableCellRenderer();
+        centrar.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        for (int i = 0; i < TablaValores.getColumnCount(); i++) {
+            TablaValores.getColumnModel().getColumn(i).setCellRenderer(centrar);
+            DefaultTableCellRenderer r = (DefaultTableCellRenderer) TablaValores.getTableHeader().getDefaultRenderer();
+            r.setHorizontalAlignment(SwingConstants.CENTER);
+        }
+    }
+
+
+
+
+
 }
+
