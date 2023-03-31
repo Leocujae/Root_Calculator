@@ -15,7 +15,8 @@ public final class MRegula_falsi extends MethodIntervalos{
  
     private double MidPoint;
     private double MidPointPrev;
- 
+    private double fa;
+   
     
     
     public MRegula_falsi() {
