@@ -15,8 +15,7 @@ public abstract class MethodIntervalos extends Method{
 
     protected double a;
     protected double b;
-    protected double fa;
-    protected double fb;
+  
     
     
     
