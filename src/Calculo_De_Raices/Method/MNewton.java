@@ -8,7 +8,6 @@ import Controller.Controller;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.Node;
 import org.nfunk.jep.ParseException;
 
@@ -29,11 +28,13 @@ public final class MNewton extends Method{
     }
 
     @Override
-    public ArrayList<MethodResult> Solution() {
+    public ArrayList<MethodResult> Solution() throws Exception{
         
+        if( x < a || x > b){
+            throw new Exception("La aproximación inicial debe estar contenida en el intervalo a,b.");
+        }
         
-        
-        double x1 = 0;
+        double x1;
 
         ArrayList<MethodResult> result = new ArrayList<>();
         int i = 0;
@@ -41,6 +42,8 @@ public final class MNewton extends Method{
         double Em = Double.NaN;
 
          do{
+            
+             
              result.add(new MethodResult(x, Em));
              x1 = x-CalcularFuncion(function,x)/CalcularFuncion(Derivada,x);
              Em = Math.abs(x1-x);
@@ -61,7 +64,7 @@ public final class MNewton extends Method{
     public void loadDateNewtom() {
      
         this.loadDate();
-        x = Controller.getInstance().getArreglo()[0];
+        x = Controller.getInstance().getAproximacion();
         Node nodoFuncion;
         Node nodoDerivada;
         try {

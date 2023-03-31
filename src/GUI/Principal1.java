@@ -13,6 +13,7 @@ import Graficadora.G;
 import Calculo_De_Raices.Method.MethodResult;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +30,8 @@ public class Principal1 extends javax.swing.JFrame {
     G grafica = new G("Graficadora", "Eje X", "Eje Y");
     public Principal1() {
         initComponents();
+        jLabelAprox.setVisible(false);
+        Aproximacion.setVisible(false);
         CentrarTabla();
     }
 
@@ -58,16 +61,18 @@ public class Principal1 extends javax.swing.JFrame {
         Tolerancia = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        B = new javax.swing.JTextField();
+        Aproximacion = new javax.swing.JTextField();
         A = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         D = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelAprox = new javax.swing.JLabel();
         B1 = new javax.swing.JTextField();
         A1 = new javax.swing.JTextField();
         jLabelError = new javax.swing.JLabel();
+        B = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jSpinnerGrado = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
@@ -146,7 +151,7 @@ public class Principal1 extends javax.swing.JFrame {
         });
         jPanel6.add(jRSecante, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 110, -1, -1));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 210, 150));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 280, 150));
 
         Funcion.setBackground(new java.awt.Color(0, 0, 0));
         Funcion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -159,7 +164,7 @@ public class Principal1 extends javax.swing.JFrame {
                 FuncionActionPerformed(evt);
             }
         });
-        jPanel2.add(Funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 190, -1));
+        jPanel2.add(Funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 68, 280, 30));
 
         javax.swing.GroupLayout jPanelGraficaLayout = new javax.swing.GroupLayout(jPanelGrafica);
         jPanelGrafica.setLayout(jPanelGraficaLayout);
@@ -172,7 +177,7 @@ public class Principal1 extends javax.swing.JFrame {
             .addGap(0, 350, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanelGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 370, 350));
+        jPanel2.add(jPanelGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 370, 350));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setForeground(new java.awt.Color(0, 204, 0));
@@ -216,32 +221,32 @@ public class Principal1 extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 600, 270));
-        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 180, 10));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 670, 270));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 280, 10));
 
         Tolerancia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Tolerancia.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         Tolerancia.setText("0.002");
         jPanel2.add(Tolerancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 70, 25));
 
-        jLabel2.setFont(new java.awt.Font("Roboto Medium", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Funcíon");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 190, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 190, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tolerancia");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 80, 30));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 70, 30));
 
-        B.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        B.setText("2");
-        B.addActionListener(new java.awt.event.ActionListener() {
+        Aproximacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Aproximacion.setText("1");
+        Aproximacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BActionPerformed(evt);
+                AproximacionActionPerformed(evt);
             }
         });
-        jPanel2.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 40, 25));
+        jPanel2.add(Aproximacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 40, 25));
 
         A.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         A.setText("-2");
@@ -255,7 +260,7 @@ public class Principal1 extends javax.swing.JFrame {
                 AActionPerformed(evt);
             }
         });
-        jPanel2.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 40, 25));
+        jPanel2.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 40, 25));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Mandalore Expanded", 0, 18)); // NOI18N
@@ -266,7 +271,7 @@ public class Principal1 extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 90, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 90, 30));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Mandalore Expanded", 0, 14)); // NOI18N
@@ -276,7 +281,7 @@ public class Principal1 extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 200, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 280, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Mandalore Expanded", 0, 18)); // NOI18N
@@ -286,16 +291,16 @@ public class Principal1 extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 100, 30));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 100, 30));
 
         D.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         D.setText("0.1");
-        jPanel2.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 40, 30));
+        jPanel2.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 380, 40, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Intervalo");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, 30));
+        jLabelAprox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelAprox.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelAprox.setText("Aproximacion inicial");
+        jPanel2.add(jLabelAprox, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 130, 30));
 
         B1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         B1.setText("5");
@@ -305,19 +310,33 @@ public class Principal1 extends javax.swing.JFrame {
                 B1ActionPerformed(evt);
             }
         });
-        jPanel2.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, 40, 30));
+        jPanel2.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, 40, 30));
 
         A1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         A1.setText("-5");
         A1.setMaximumSize(new java.awt.Dimension(6, 20));
-        jPanel2.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 40, 30));
+        jPanel2.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, 40, 30));
 
         jLabelError.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelError.setForeground(new java.awt.Color(255, 0, 0));
         jLabelError.setFocusable(false);
-        jPanel2.add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 424, 470, 30));
+        jPanel2.add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 424, 670, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 800));
+        B.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        B.setText("2");
+        B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BActionPerformed(evt);
+            }
+        });
+        jPanel2.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 40, 25));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Intervalo");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 60, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 800));
 
         jTabbedPane1.addTab("Calcular Raices", jPanel1);
 
@@ -388,7 +407,7 @@ public class Principal1 extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
                     .addComponent(jScrollPane4)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,8 +454,8 @@ public class Principal1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 10, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,45 +472,48 @@ public class Principal1 extends javax.swing.JFrame {
 
     private void jRBisepccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBisepccionActionPerformed
         type = TypeMethod.Mbiseccion;
-        jLabel4.setText("Intervalos");
-        B.setVisible(true);  
+        jLabelAprox.setVisible(false);
+        Aproximacion.setVisible(false);
+    
     }//GEN-LAST:event_jRBisepccionActionPerformed
 
     private void jRRegulaFalsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRRegulaFalsiActionPerformed
         type = TypeMethod.MRegula_falsi;
-        jLabel4.setText("Intervalos");
-        B.setVisible(true); 
+        jLabelAprox.setVisible(false);
+        Aproximacion.setVisible(false);
     }//GEN-LAST:event_jRRegulaFalsiActionPerformed
 
     private void jRNewtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNewtonActionPerformed
   if(jRNewton.isSelected()){
-         type = TypeMethod.MNewton;
-        jLabel4.setText("Aproximación inicial");
-        B.setVisible(false);    
+        type = TypeMethod.MNewton;
+        jLabelAprox.setVisible(true);
+        Aproximacion.setVisible(true);    
         }
 
     }//GEN-LAST:event_jRNewtonActionPerformed
 
     private void jRSecanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSecanteActionPerformed
         type = TypeMethod.MSecante;
-        jLabel4.setText("Intervalos");
-        B.setVisible(true); 
+         jLabelAprox.setVisible(false);
+        Aproximacion.setVisible(false);
     }//GEN-LAST:event_jRSecanteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
-        if(type != null){
         
+        if(type != null){
+            
+          
         String tempfuncion = Funcion.getText();
         double temptolerancia = Double.valueOf(Tolerancia.getText());
         double a = Double.valueOf(A.getText());
         double b = Double.valueOf(B.getText());
-        
+        double aprox = Double.valueOf(Aproximacion.getText());
         x.setFunction(tempfuncion);
         x.setTolerance(temptolerancia);
         x.setIntervalos(a, b);
         x.setTypeMethod(type);
-        
+        x.setAproximacion(aprox);
         
         Function e = new Function(tempfuncion);
         try {
@@ -499,7 +521,7 @@ public class Principal1 extends javax.swing.JFrame {
             System.out.println(e.eval(a));
             System.out.println(e.eval(b));
             if (e.eval(a) * e.eval(b) < 0) {
-                 jLabelError.setVisible(false);
+                jLabelError.setVisible(false);
                 x.Resolver();
 
                 ArrayList<MethodResult> solution = x.getSolution();
@@ -527,26 +549,18 @@ public class Principal1 extends javax.swing.JFrame {
                 jLabelError.setVisible(true);
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, "Se ha encontrado un error");
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
         }
         }
         else{
             jLabelError.setText("Seleccione el método a utilizar");
             jLabelError.setVisible(true);
         }
-        
-        
-        
-        
-        
-        
-       
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActionPerformed
+    private void AproximacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AproximacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BActionPerformed
+    }//GEN-LAST:event_AproximacionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
@@ -641,6 +655,10 @@ public class Principal1 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -679,6 +697,7 @@ public class Principal1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField A;
     private javax.swing.JTextField A1;
+    private javax.swing.JTextField Aproximacion;
     private javax.swing.JTextField B;
     private javax.swing.JTextField B1;
     private javax.swing.JTextField D;
@@ -695,7 +714,8 @@ public class Principal1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabelAprox;
     private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

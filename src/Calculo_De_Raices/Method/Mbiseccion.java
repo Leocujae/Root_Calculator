@@ -53,7 +53,7 @@ public class Mbiseccion extends MethodIntervalos{
                 b = Midpoint;
 
             }
-            result.add(new MethodResult(Midpoint, Em));
+            result.add(new MethodResult(Midpoint, Math.abs(Em)));
             
             i++;
         }while (!end && i < MaxIter && Em > toterancia);

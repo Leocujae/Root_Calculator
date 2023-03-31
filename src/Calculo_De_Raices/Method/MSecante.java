@@ -52,7 +52,7 @@ public final class MSecante extends MethodIntervalos{
             fx3 = CalcularFuncion(function, x3);
             x1 = x2;
             x2 = x3;
-            result.add(new MethodResult(x3,x2-x1));
+            result.add(new MethodResult(x3,Math.abs(x2-x1)));
             i++;
         
             

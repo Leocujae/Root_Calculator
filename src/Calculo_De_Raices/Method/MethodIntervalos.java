@@ -13,6 +13,8 @@ import Controller.Controller;
  */
 public abstract class MethodIntervalos extends Method{
 
+    
+    //Eliminar esta clase
     protected double a;
     protected double b;
   

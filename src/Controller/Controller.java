@@ -24,7 +24,7 @@ public class Controller {
   
     private FactoryMethod factory;
     
-    
+    private double aproximacion;
     private  int Titerator;
     private String function;
     private double Tolerance ;
@@ -108,16 +108,20 @@ public class Controller {
     public void setFunction(String function){
         this.function = function;
     }
-    
+
+    public double getAproximacion() {
+        return aproximacion;
+    }
+
+    public void setAproximacion(double aproximacion) {
+        this.aproximacion = aproximacion;
+    }
     public void Resolver() throws Exception{
         
         //Implementar el patros para poder obtener soluciones de las otras fabricas
-        try{
         MethodRootCreator Creator = new MethodRootCreator();
         Solution =  ((Method)Creator.CreateMethod(typeMethod)).Solution();
-        }catch(Exception e){
-            throw new Exception("Nombre de clase incorrecto");
-        }
+       
     }
 
 }

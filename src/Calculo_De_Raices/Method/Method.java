@@ -14,9 +14,10 @@ public abstract class Method {
     protected String function;    
     protected double toterancia;    
     protected int MaxIter;
+    protected double a;
+    protected double b; 
      
-     
-    public abstract ArrayList<MethodResult> Solution();
+    public abstract ArrayList<MethodResult> Solution()  throws Exception;
     
     
     protected void loadDate() {
@@ -25,6 +26,8 @@ public abstract class Method {
         MaxIter = Controller.getInstance().getIteraciones();
         toterancia = Controller.getInstance().getTolerance();
         function = Controller.getInstance().getFunction();
+        a = Controller.getInstance().getArreglo()[0];
+        b = Controller.getInstance().getArreglo()[1];
     }
  
     protected double CalcularFuncion(String string, double Xvalue) {
