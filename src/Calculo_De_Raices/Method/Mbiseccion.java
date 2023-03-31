@@ -13,11 +13,7 @@ public class Mbiseccion extends MethodIntervalos{
 
     private double Midpoint ;
     
-    
    
-    
-   
-
     
     public Mbiseccion() {
 
@@ -46,9 +42,10 @@ public class Mbiseccion extends MethodIntervalos{
             Em = (b- a)/2;
             double FunctionPointValue =CalcularFuncion(function,Midpoint) ;
             double fa = CalcularFuncion(function, a);
-            if (FunctionPointValue == 0 || Em < toterancia ) {
-                end = true;
+            if (FunctionPointValue == 0 ) {
                 Em = 0;
+                end = true;
+               // Em = 0;
             } else if (fa * FunctionPointValue > 0) {
                 a = Midpoint;
 
@@ -56,13 +53,10 @@ public class Mbiseccion extends MethodIntervalos{
                 b = Midpoint;
 
             }
-
-            
-           
             result.add(new MethodResult(Midpoint, Em));
             
             i++;
-        }while (!end && i < MaxIter);
+        }while (!end && i < MaxIter && Em > toterancia);
             
             
         

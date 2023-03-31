@@ -23,11 +23,9 @@ public abstract class MethodIntervalos extends Method{
     @Override
      protected void loadDate(){
         super.loadDate();
-        
-
         a = Controller.getInstance().getArreglo()[0];
         b = Controller.getInstance().getArreglo()[1];
-        //toterancia = Controller.getInstance().getTolerance();
+      
 
     }
     

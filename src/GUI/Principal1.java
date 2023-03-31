@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import Interpolacion_de_funcionesr.Method.Lagrang;
+import Interpolacion_de_funcionesr.Method.Lagrange;
 import Controller.Controller;
 import Factory.TypeMethod;
 import Graficadora.Function;
@@ -314,6 +314,7 @@ public class Principal1 extends javax.swing.JFrame {
 
         jLabelError.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelError.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelError.setFocusable(false);
         jPanel2.add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 424, 470, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 800));
@@ -356,6 +357,7 @@ public class Principal1 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(TablaValores);
 
         jTextField1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jTextField1.setText("SIn implementar");
         jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Función ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12))); // NOI18N
         jTextField1.setOpaque(false);
 
@@ -493,6 +495,9 @@ public class Principal1 extends javax.swing.JFrame {
         
         Function e = new Function(tempfuncion);
         try {
+            
+            System.out.println(e.eval(a));
+            System.out.println(e.eval(b));
             if (e.eval(a) * e.eval(b) < 0) {
                  jLabelError.setVisible(false);
                 x.Resolver();
@@ -518,7 +523,7 @@ public class Principal1 extends javax.swing.JFrame {
 
             }
             else{
-                jLabelError.setText("En el intervalo dado la funcion no sufre cambio de monotonía");
+                jLabelError.setText("En el intervalo la funcion debe sufrir cambio de monotonía y presentar una unica raiz");
                 jLabelError.setVisible(true);
             }
         } catch (Exception ex) {
@@ -618,7 +623,7 @@ public class Principal1 extends javax.swing.JFrame {
            X.add(Double.valueOf((String)TablaValores.getValueAt(0, i)));
            Y.add(Double.valueOf((String)TablaValores.getValueAt(1, i))); 
         }
-        Lagrang temp = new Lagrang(X, Y);
+        Lagrange temp = new Lagrange(X, Y);
         double result = temp.CalcularPL(Double.valueOf(Valor.getText()));
         
         

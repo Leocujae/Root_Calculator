@@ -1,6 +1,7 @@
 
 package Graficadora;
 
+import FuncionesMatematicas.sin;
 import org.lsmp.djep.djep.DJep;
 
 
@@ -11,6 +12,8 @@ public class Function {
     DJep DJep ;
     public Function(String definition) {
         
+        
+        //Cargar por la controladora
         this.definition = definition;
         DJep = new DJep();
         DJep.addStandardFunctions();
@@ -20,7 +23,8 @@ public class Function {
         DJep.setAllowAssignment(true);
         DJep.setImplicitMul(true);
         DJep.addStandardDiffRules();
-        
+        DJep.removeFunction("sin");
+        DJep.addFunction("sin",new sin());
         
    
     }

@@ -8,7 +8,6 @@ import Controller.Controller;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.Node;
 import org.nfunk.jep.ParseException;
 
@@ -20,19 +19,13 @@ public final class MNewton extends Method{
 
     private String Derivada;
     private double x;
-    
-    
-    
+
     public MNewton() {
-        DJep = new DJep(); 
-        loadDate();
+        loadDateNewtom();
     }
 
     @Override
     public ArrayList<MethodResult> Solution() {
-        
-        
-        
         double x1 = 0;
 
         ArrayList<MethodResult> result = new ArrayList<>();
@@ -55,22 +48,11 @@ public final class MNewton extends Method{
 
 
     
-    @Override
-    public void loadDate() {
-        
-        DJep = new DJep();
-        this.DJep.addStandardFunctions();
-        this.DJep.addStandardConstants();
-        this.DJep.addComplex();
-        this.DJep.setAllowUndeclared(true);
-        this.DJep.setAllowAssignment(true);
-        this.DJep.setImplicitMul(true);
-        this.DJep.addStandardDiffRules();
-        
-        
-        MaxIter = 80;
-        toterancia = Controller.getInstance().getTolerance();
-        function = Controller.getInstance().getFunction();
+  
+ 
+    public void loadDateNewtom() {
+     
+        this.loadDate();
         x = Controller.getInstance().getArreglo()[0];
         Node nodoFuncion;
         Node nodoDerivada;

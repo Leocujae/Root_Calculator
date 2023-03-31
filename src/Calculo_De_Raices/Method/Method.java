@@ -21,24 +21,12 @@ public abstract class Method {
     
     protected void loadDate() {
         
-        DJep = new DJep();
-        this.DJep.addStandardFunctions();
-        this.DJep.addStandardConstants();
-        this.DJep.addComplex();
-        this.DJep.setAllowUndeclared(true);
-        this.DJep.setAllowAssignment(true);
-        this.DJep.setImplicitMul(true);
-        this.DJep.addStandardDiffRules();
-
-        
-        MaxIter = 80;
+        DJep = Controller.getInstance().getDJep();
+        MaxIter = Controller.getInstance().getIteraciones();
         toterancia = Controller.getInstance().getTolerance();
         function = Controller.getInstance().getFunction();
     }
  
-    
-    
-    
     protected double CalcularFuncion(String string, double Xvalue) {
        
         double result = Double.NaN;

@@ -49,6 +49,7 @@ public final class MSecante extends MethodIntervalos{
             
             setM();
             InTX = b-fb/m;
+            System.out.println(InTX);
             if(InTX != last ){
             result.add(new MethodResult(InTX,CalcularFuncion(function, InTX)));
             i++;

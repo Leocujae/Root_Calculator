@@ -14,7 +14,7 @@ public final class MRegula_falsi extends MethodIntervalos{
 
  
     private double MidPoint;
-    private double MidPintPrev;
+    private double MidPointPrev;
  
     
     
@@ -28,8 +28,7 @@ public final class MRegula_falsi extends MethodIntervalos{
     }
     private void setMidpoint(){
         
-        MidPintPrev = MidPoint;
-        
+        MidPointPrev = MidPoint;
         double fb = CalcularFuncion(function,b);
         fa = CalcularFuncion(function, a);
         MidPoint = (fa*b-fb*a)/(fa-fb);
@@ -44,12 +43,14 @@ public final class MRegula_falsi extends MethodIntervalos{
         
         
       boolean end = false;  
-      double Ex;
+      double Ex = Double.NaN;
       int i = 0;
       do{
-           Ex = Math.abs(MidPoint - MidPintPrev);
           
-            if (Ex == 0) {
+          result.add(new MethodResult(MidPoint,Ex));
+           Ex = Math.abs(MidPoint - MidPointPrev);
+          
+            if (Ex == 0 || CalcularFuncion(function, MidPoint) == 0) {
                 end = true;
             } else if (fa * CalcularFuncion(function, MidPoint) < 0) {
                 b = MidPoint;
@@ -59,7 +60,7 @@ public final class MRegula_falsi extends MethodIntervalos{
             }
 
             setMidpoint();
-            result.add(new MethodResult(MidPoint,Ex));
+            
             i++;
         } while (Ex > toterancia && !end && i<MaxIter);
         return result;

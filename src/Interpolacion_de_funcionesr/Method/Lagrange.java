@@ -4,12 +4,11 @@ package Interpolacion_de_funcionesr.Method;
 import java.util.ArrayList;
 import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.Node;
-import org.nfunk.jep.ParseException;
 
 
+//Luego implementar Patron Fabrica
 
-
-public class Lagrang {
+public class Lagrange {
     
     private ArrayList<Double> ValoresX;
     private ArrayList<Double> ValoresY;
@@ -18,10 +17,14 @@ public class Lagrang {
     
     
     
-    public Lagrang(ArrayList<Double> ValoresX ,ArrayList<Double> ValoresY ) {
+    public Lagrange(ArrayList<Double> ValoresX ,ArrayList<Double> ValoresY ) {
+        
+        //*Hacer carga de datos a traves de la Controladora
         this.ValoresX = ValoresX;
         this.ValoresY = ValoresY;
         this.PolinomiosL = new ArrayList<>();
+        
+        
         DJep = new DJep();
         DJep.addStandardFunctions();
         DJep.addStandardConstants();
@@ -121,6 +124,8 @@ public class Lagrang {
         return p;
     }
      
+    
+//Calculo del error
 //     public double Error(){
 //         
 //     }

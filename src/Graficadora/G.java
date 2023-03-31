@@ -33,7 +33,7 @@ public class G {
         this.Ejex = ejex;
         this.Ejey = ejey;
         
-        grafica = ChartFactory.createXYLineChart(titulo, ejey, ejey, datos,PlotOrientation.VERTICAL,true,true,true);
+        grafica = ChartFactory.createXYLineChart(titulo, ejex, ejey, datos,PlotOrientation.VERTICAL,true,true,true);
     }
 
     public void AgregarGrafica(String ID , double[] x , double[] y){

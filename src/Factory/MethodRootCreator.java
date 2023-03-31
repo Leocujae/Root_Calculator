@@ -12,9 +12,9 @@ import java.util.logging.Logger;
  *
  * @author EL_DEO
  */
-public class MethodCreator implements FactoryMethod{
+public class MethodRootCreator implements FactoryMethod{
 
-    public MethodCreator() {}
+    public MethodRootCreator() {}
 
     //FactoryMethod
     @Override
@@ -28,7 +28,7 @@ public class MethodCreator implements FactoryMethod{
             temp =   (Method) c.newInstance();
    
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
-            Logger.getLogger(MethodCreator.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MethodRootCreator.class.getName()).log(Level.SEVERE, null, ex);
         }  
         return temp;
     }
