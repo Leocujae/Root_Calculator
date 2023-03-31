@@ -8,6 +8,7 @@ import Controller.Controller;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.Node;
 import org.nfunk.jep.ParseException;
 
@@ -19,24 +20,31 @@ public final class MNewton extends Method{
 
     private String Derivada;
     private double x;
-
+    
+    
+    
     public MNewton() {
+       
         loadDateNewtom();
     }
 
     @Override
     public ArrayList<MethodResult> Solution() {
+        
+        
+        
         double x1 = 0;
 
         ArrayList<MethodResult> result = new ArrayList<>();
         int i = 0;
 
-        double Em = x;
+        double Em = Double.NaN;
 
          do{
+             result.add(new MethodResult(x, Em));
              x1 = x-CalcularFuncion(function,x)/CalcularFuncion(Derivada,x);
              Em = Math.abs(x1-x);
-             result.add(new MethodResult(x, Em));
+             
              x = x1;
              
              
