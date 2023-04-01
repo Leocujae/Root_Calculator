@@ -7,7 +7,8 @@ import Factory.TypeMethod;
 import Root_Calculation_Methods.Method;
 import Root_Calculation_Methods.MethodResult;
 import Factory.FactoryMethod;
-import MathFunctions.sin;
+import MathFunctions.Sin;
+import MathFunctions.Sqr;
 import java.util.ArrayList;
 import org.lsmp.djep.djep.DJep;
 
@@ -63,7 +64,8 @@ public class Controller {
         
         //Nueva funcion seno con metodo para convertir de grados a radianes
         this.DJep.removeFunction("sin");
-        this.DJep.addFunction("sin",new sin());
+        this.DJep.addFunction("sin",new Sin());
+        this.DJep.addFunction("sqr", new Sqr());
     }
 
     //Singleton
@@ -117,11 +119,9 @@ public class Controller {
     public double getAproximacion() {
         return aproximacion;
     }
-
     public void setAproximacion(double aproximacion) {
         this.aproximacion = aproximacion;
     }
-  
     public void Resolver() throws Exception {
 
         //Implementar el patros para poder obtener soluciones de las otras fabricas

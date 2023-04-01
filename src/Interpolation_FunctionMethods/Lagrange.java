@@ -124,11 +124,6 @@ public class Lagrange {
         return p;
     }
      
-    
-//Calculo del error
-//     public double Error(){
-//         
-//     }
-//     
+     
      
 }

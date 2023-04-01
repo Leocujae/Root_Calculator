@@ -1,7 +1,8 @@
 
 package Grapher;
 
-import MathFunctions.sin;
+import MathFunctions.Sin;
+import MathFunctions.Sqr;
 import org.lsmp.djep.djep.DJep;
 
 
@@ -24,7 +25,8 @@ public class Function {
         DJep.setImplicitMul(true);
         DJep.addStandardDiffRules();
         DJep.removeFunction("sin");
-        DJep.addFunction("sin",new sin());
+        DJep.addFunction("sin",new Sin());
+        DJep.addFunction("sqr", new Sqr());
         
    
     }

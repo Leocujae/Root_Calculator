@@ -6,10 +6,10 @@ import org.nfunk.jep.ParseException;
 import org.nfunk.jep.function.PostfixMathCommand;
 
 
-public class sin extends PostfixMathCommand{
+public class Sin extends PostfixMathCommand{
     
     
-    public sin(){
+    public Sin(){
      numberOfParameters = 1;   
     }
     
