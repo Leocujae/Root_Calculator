@@ -4,7 +4,7 @@
  */
 package Factory;
 
-import Calculo_De_Raices.Method.Method;
+import Root_Calculation_Methods.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +20,7 @@ public class MethodRootCreator implements FactoryMethod{
     @Override
     public Method CreateMethod(TypeMethod type) {
         
-        String classname = "Calculo_De_Raices.Method."+ type;
+        String classname = "Root_Calculation_Methods."+ type;
         Method temp = null;
         Class c = null;
         try {

@@ -1,7 +1,7 @@
 
 package Factory;
 
-import Calculo_De_Raices.Method.Method;
+import Root_Calculation_Methods.Method;
 
 /**
  *

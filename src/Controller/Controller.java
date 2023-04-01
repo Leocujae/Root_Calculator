@@ -4,10 +4,10 @@ package Controller;
 
 import Factory.MethodRootCreator;
 import Factory.TypeMethod;
-import Calculo_De_Raices.Method.Method;
-import Calculo_De_Raices.Method.MethodResult;
+import Root_Calculation_Methods.Method;
+import Root_Calculation_Methods.MethodResult;
 import Factory.FactoryMethod;
-import FuncionesMatematicas.sin;
+import MathFunctions.sin;
 import java.util.ArrayList;
 import org.lsmp.djep.djep.DJep;
 
@@ -23,15 +23,20 @@ public class Controller {
     private static Controller controller = null;
   
     private FactoryMethod factory;
-    
+    private DJep DJep;
+     
     private double aproximacion;
+    private double Tolerance ;
+    private double[] intervalos;
+    
     private  int Titerator;
     private String function;
-    private double Tolerance ;
     private TypeMethod typeMethod;
-    private double[] intervalos;
+
     private ArrayList<MethodResult> Solution;
-    private DJep DJep;
+    
+    
+   
     
     
     private Controller() {
@@ -116,12 +121,13 @@ public class Controller {
     public void setAproximacion(double aproximacion) {
         this.aproximacion = aproximacion;
     }
-    public void Resolver() throws Exception{
-        
+  
+    public void Resolver() throws Exception {
+
         //Implementar el patros para poder obtener soluciones de las otras fabricas
         MethodRootCreator Creator = new MethodRootCreator();
-        Solution =  ((Method)Creator.CreateMethod(typeMethod)).Solution();
-       
+        Solution = ((Method) Creator.CreateMethod(typeMethod)).Solution();
+
     }
 
 }
