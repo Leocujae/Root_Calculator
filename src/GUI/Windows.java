@@ -32,7 +32,7 @@ public class Windows extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(650, 800));
         setResizable(false);
 
-        jTabbedPane1.addTab("Root_Calculator", jPanelRootMethods1);
+        jTabbedPane1.addTab("Calcular Raices", jPanelRootMethods1);
         jTabbedPane1.addTab("Interpolar Funciones", jPanelInterpolation1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -43,7 +43,7 @@ public class Windows extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 813, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

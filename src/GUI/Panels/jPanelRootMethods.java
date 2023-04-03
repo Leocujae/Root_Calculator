@@ -9,18 +9,20 @@ import Controller.Controller;
 import Factory.TypeMethod;
 import Grapher.Function;
 import Grapher.Graph;
+import Messages.Messages;
 import Root_Calculation_Methods.MethodResult;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.lsmp.djep.djep.DJep;
 
 /**
  *
  * @author EL_DEO
  */
 public class jPanelRootMethods extends javax.swing.JPanel {
-
+    Messages SMS ;
     Controller x = Controller.getInstance();
     TypeMethod type;
 
@@ -29,6 +31,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
     Graph grafica = new Graph("Graficadora", "Eje X", "Eje Y");
 
     public jPanelRootMethods() {
+        SMS = new Messages();
         initComponents();
         jLabelAprox.setVisible(false);
         Aproximacion.setVisible(false);
@@ -65,7 +68,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonCalcular = new javax.swing.JButton();
         Tolerancia = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabelError = new javax.swing.JLabel();
@@ -81,7 +84,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         Funcion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         Funcion.setForeground(new java.awt.Color(255, 255, 255));
         Funcion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Funcion.setText("e^(x*2)+x");
+        Funcion.setText("e^(-x)-sin(x)");
         Funcion.setBorder(null);
         Funcion.setOpaque(false);
         Funcion.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +92,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 FuncionActionPerformed(evt);
             }
         });
-        jPanel1.add(Funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 68, 280, 30));
+        jPanel1.add(Funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 58, 260, 40));
         Funcion.getAccessibleContext().setAccessibleName("");
         Funcion.getAccessibleContext().setAccessibleDescription("");
 
@@ -208,7 +211,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         });
         jPanel6.add(jRSecante, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 110, -1, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 280, 150));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 300, 150));
 
         jSpinnerDecimales.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jSpinnerDecimales.setModel(new javax.swing.SpinnerNumberModel(4, 1, 15, 1));
@@ -282,20 +285,20 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabel5.setText("Intervalo");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 60, 30));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Mandalore Expanded", 0, 14)); // NOI18N
-        jButton2.setText("Calcular");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCalcular.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonCalcular.setFont(new java.awt.Font("Mandalore Expanded", 0, 14)); // NOI18N
+        jButtonCalcular.setText("Calcular");
+        jButtonCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonCalcularActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 290, 30));
+        jPanel1.add(jButtonCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 290, 30));
 
         Tolerancia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Tolerancia.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         Tolerancia.setText("0.002");
-        jPanel1.add(Tolerancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 70, 25));
+        jPanel1.add(Tolerancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 80, 25));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Mandalore Expanded", 0, 18)); // NOI18N
@@ -324,8 +327,8 @@ public class jPanelRootMethods extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Funcíon");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 130, 30));
+        jLabel2.setText("Funcíon :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -372,8 +375,8 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+    private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
+       
         if(type != null){
             String tempfuncion = Funcion.getText();
             double temptolerancia = Double.valueOf(Tolerancia.getText());
@@ -383,20 +386,15 @@ public class jPanelRootMethods extends javax.swing.JPanel {
             x.setFunction(tempfuncion);
             
             if(temptolerancia < 0.0000000000000009){
-                JOptionPane.showMessageDialog(this, "ADVERTENCIA! no podemos garantizar resultados satisfactorios con valor de tolerancia(0) o más allá de 15 cifras decimales");
+                JOptionPane.showMessageDialog(this, SMS.Mensage_1());
             }
             x.setTolerance(temptolerancia);
             x.setIntervalos(a, b);
             x.setTypeMethod(type);
             x.setAproximacion(aprox);
-
-            Function e = new Function(tempfuncion);
-            try {
-
-                //            System.out.println(e.eval(a));
-                //            System.out.println(e.eval(b));
-
-                if (e.eval(a) * e.eval(b) < 0) {
+            try {           
+              
+                if (x.Bolsano(a, b, tempfuncion)) {
                     jLabelError.setVisible(false);
                     x.Resolver();
 
@@ -423,11 +421,11 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                     jTable1.setModel(model);
                     jTable1.setVisible(true);
                     jScrollPane1.setVisible(true);
-                    JOptionPane.showMessageDialog(this, "Resultado calculado con éxito");
+                    JOptionPane.showMessageDialog(this, SMS.Mensage_2());
 
                 }
                 else{
-                    jLabelError.setText("En el intervalo la funcion debe sufrir cambio de monotonía y presentar una unica raiz");
+                    jLabelError.setText(SMS.Mensage_3());
                     jLabelError.setVisible(true);
                 }
             } catch (Exception ex) {
@@ -435,10 +433,10 @@ public class jPanelRootMethods extends javax.swing.JPanel {
             }
         }
         else{
-            jLabelError.setText("Seleccione el método a utilizar");
+            jLabelError.setText(SMS.Mensage_4());
             jLabelError.setVisible(true);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonCalcularActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -518,8 +516,8 @@ public class jPanelRootMethods extends javax.swing.JPanel {
     private javax.swing.JTextField Tolerancia;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonCalcular;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

@@ -40,7 +40,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="1" pref="813" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="1" min="-2" pref="813" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -52,8 +52,8 @@
         <Component class="GUI.Panels.jPanelRootMethods" name="jPanelRootMethods1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Root_Calculator">
-                <Property name="tabTitle" type="java.lang.String" value="Root_Calculator"/>
+              <JTabbedPaneConstraints tabName="Calcular Raices">
+                <Property name="tabTitle" type="java.lang.String" value="Calcular Raices"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

@@ -1,8 +1,6 @@
 
 package Grapher;
 
-import MathFunctions.Sin;
-import MathFunctions.Sqr;
 import org.lsmp.djep.djep.DJep;
 
 
@@ -24,9 +22,9 @@ public class Function {
         DJep.setAllowAssignment(true);
         DJep.setImplicitMul(true);
         DJep.addStandardDiffRules();
-        DJep.removeFunction("sin");
-        DJep.addFunction("sin",new Sin());
-        DJep.addFunction("sqr", new Sqr());
+        //DJep.removeFunction("sin");
+        //DJep.addFunction("sin",new Sin());
+      
         
    
     }
@@ -53,7 +51,7 @@ public class Function {
 
     public double[] rango(double x0, double xn, double d) {
         int n = (int) Math.abs(xn - x0 / d);
-
+        
         double[] r = new double[n];
         for (int i = 0; i < n; i++) {
             r[i] = x0;

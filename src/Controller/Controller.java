@@ -8,7 +8,6 @@ import Root_Calculation_Methods.Method;
 import Root_Calculation_Methods.MethodResult;
 import Factory.FactoryMethod;
 import MathFunctions.Sin;
-import MathFunctions.Sqr;
 import java.util.ArrayList;
 import org.lsmp.djep.djep.DJep;
 
@@ -63,9 +62,9 @@ public class Controller {
         
         
         //Nueva funcion seno con metodo para convertir de grados a radianes
-        this.DJep.removeFunction("sin");
-        this.DJep.addFunction("sin",new Sin());
-        this.DJep.addFunction("sqr", new Sqr());
+        //this.DJep.removeFunction("sin");
+        //this.DJep.addFunction("sin",new Sin());
+      
     }
 
     //Singleton
@@ -130,4 +129,23 @@ public class Controller {
 
     }
 
+    
+    public boolean Bolsano(double a , double b , String function){
+
+        boolean r = true;
+
+        DJep.addVariable("x", a);
+        DJep.parseExpression(function);
+        double fa = DJep.getValue();
+        System.out.println(fa);
+        DJep.addVariable("x", b);
+        DJep.parseExpression(function);
+        double fb = DJep.getValue();
+        System.out.println(fb);
+        if (fa * fb < 0) {
+            r = true;
+        }
+        return r;
+
+    }
 }
