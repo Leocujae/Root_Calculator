@@ -21,12 +21,12 @@ public final class MSecante extends Method{
     private double InTX;
 
     
+    private double x0;
     private double x1;
-    private double x2;
     private double x3;
+    private double fx0;
     private double fx1;
-    private double fx2;
-    private double fx3;
+    //private double fx3;
     
     
     public MSecante() {
@@ -38,26 +38,27 @@ public final class MSecante extends Method{
     public ArrayList<MethodResult> Solution() {
       
         ArrayList<MethodResult> result = new ArrayList<>();
-       
-        x1 = a;
-        x2 = b;
+        double Em ;
+        x0 = Controller.Controller.getInstance().getAproximacion1();
+        x1 = Controller.Controller.getInstance().getAproximacion2();
         
         
         int i = 0;
         do{
             
+            fx0 = CalcularFuncion(function, x0);
             fx1 = CalcularFuncion(function, x1);
-            fx2 = CalcularFuncion(function, x2);
-            x3 = x2 - (fx2 * (x1 - x2)) / (fx1 - fx2);
-            fx3 = CalcularFuncion(function, x3);
-            x1 = x2;
-            x2 = x3;
-            result.add(new MethodResult(x3,Math.abs(x2-x1)));
+            x3 = x1 - fx1 * (x1 - x0) / (fx1 - fx0);
+            //fx3 = CalcularFuncion(function, x3);
+            x0 = x1;
+            x1 = x3;
+            Em = x1-x0;
+            result.add(new MethodResult(x3,Math.abs(Em)));
             i++;
         
             
         }
-        while(Math.abs(x2-x1)>toterancia && i < MaxIter);
+        while(Math.abs(Em)>toterancia && i < MaxIter);
         return result;
   
     }

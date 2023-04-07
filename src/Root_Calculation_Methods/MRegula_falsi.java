@@ -42,12 +42,13 @@ public final class MRegula_falsi extends Method{
     
         
         
-        
+      fa = CalcularFuncion(function, a);  
+      
+      
       boolean end = false;  
       double Ex = Double.NaN;
       int i = 0;
       do{
-          
           result.add(new MethodResult(MidPoint,Ex));
            Ex = Math.abs(MidPoint - MidPointPrev);
           

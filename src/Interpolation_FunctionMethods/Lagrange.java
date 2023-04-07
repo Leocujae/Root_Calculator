@@ -15,8 +15,6 @@ public class Lagrange {
     private DJep DJep ; 
     private ArrayList<String> PolinomiosL;
     
-    
-    
     public Lagrange(ArrayList<Double> ValoresX ,ArrayList<Double> ValoresY ) {
         
         //*Hacer carga de datos a traves de la Controladora
@@ -34,7 +32,6 @@ public class Lagrange {
         DJep.setImplicitMul(true);
         DJep.addStandardDiffRules();
     }
-    
     public double CalcularPL(double x) {
         double r = 0;
         int nodos = ValoresX.size();
@@ -44,9 +41,6 @@ public class Lagrange {
         }
         return r;
     }
-
-    
-    
     public double PL(int Xn ,double x){
         double r = 1;
         String numerador ="";
@@ -101,13 +95,9 @@ public class Lagrange {
         }
         return r;
     }
-    
-     
     public ArrayList<String> getPolinomios(){
         return PolinomiosL;
     }
-     
-    
     public String GetPolinomio() {
         
         String p = "[";

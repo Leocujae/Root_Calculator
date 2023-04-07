@@ -7,7 +7,6 @@ import Factory.TypeMethod;
 import Root_Calculation_Methods.Method;
 import Root_Calculation_Methods.MethodResult;
 import Factory.FactoryMethod;
-import MathFunctions.Sin;
 import java.util.ArrayList;
 import org.lsmp.djep.djep.DJep;
 
@@ -25,7 +24,9 @@ public class Controller {
     private FactoryMethod factory;
     private DJep DJep;
      
-    private double aproximacion;
+    
+    private double aproximacion1;
+    private double aproximacion2;
     private double Tolerance ;
     private double[] intervalos;
     
@@ -115,12 +116,27 @@ public class Controller {
         this.function = function;
     }
 
-    public double getAproximacion() {
-        return aproximacion;
+    public double getAproximacion2() {
+        return aproximacion2;
     }
-    public void setAproximacion(double aproximacion) {
-        this.aproximacion = aproximacion;
+    public void setAproximacion2(double aproximacion) {
+        this.aproximacion2 = aproximacion;
     }
+
+    public double getAproximacion1() {
+        return aproximacion1;
+    }
+
+    public void setAproximacion1(double aproximacion1) {
+        this.aproximacion1 = aproximacion1;
+    }
+    
+    
+    
+    
+    
+    
+    
     public void Resolver() throws Exception {
 
         //Implementar el patros para poder obtener soluciones de las otras fabricas
@@ -132,7 +148,7 @@ public class Controller {
     
     public boolean Bolsano(double a , double b , String function){
 
-        boolean r = true;
+        boolean r = false;
 
         DJep.addVariable("x", a);
         DJep.parseExpression(function);

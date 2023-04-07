@@ -15,7 +15,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.lsmp.djep.djep.DJep;
 
 /**
  *
@@ -34,7 +33,12 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         SMS = new Messages();
         initComponents();
         jLabelAprox.setVisible(false);
-        Aproximacion.setVisible(false);
+        
+        Aproximacion1.setVisible(false);
+        Aproximacion2.setVisible(false);
+        
+        
+        
         decimales = "#.####";
         formato = new DecimalFormat(decimales);
         Funcion.setOpaque(false);
@@ -52,7 +56,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabelAprox = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         A1 = new javax.swing.JTextField();
-        Aproximacion = new javax.swing.JTextField();
+        Aproximacion2 = new javax.swing.JTextField();
         jPanelGrafica = grafica.DibujarGrafica();
         D = new javax.swing.JTextField();
         B = new javax.swing.JTextField();
@@ -74,6 +78,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabelError = new javax.swing.JLabel();
         B1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        Aproximacion1 = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setMinimumSize(new java.awt.Dimension(650, 800));
@@ -104,7 +109,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabelAprox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelAprox.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAprox.setText("Aproximacion inicial");
-        jPanel1.add(jLabelAprox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 120, 30));
+        jPanel1.add(jLabelAprox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 120, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Mandalore Expanded", 0, 18)); // NOI18N
@@ -122,14 +127,14 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         A1.setMaximumSize(new java.awt.Dimension(6, 20));
         jPanel1.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 40, 30));
 
-        Aproximacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Aproximacion.setText("1");
-        Aproximacion.addActionListener(new java.awt.event.ActionListener() {
+        Aproximacion2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Aproximacion2.setText("1");
+        Aproximacion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AproximacionActionPerformed(evt);
+                Aproximacion2ActionPerformed(evt);
             }
         });
-        jPanel1.add(Aproximacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 40, 25));
+        jPanel1.add(Aproximacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 40, 25));
 
         javax.swing.GroupLayout jPanelGraficaLayout = new javax.swing.GroupLayout(jPanelGrafica);
         jPanelGrafica.setLayout(jPanelGraficaLayout);
@@ -155,7 +160,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 BActionPerformed(evt);
             }
         });
-        jPanel1.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 40, 25));
+        jPanel1.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 40, 25));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 280, 10));
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
@@ -239,7 +244,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 AActionPerformed(evt);
             }
         });
-        jPanel1.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 40, 25));
+        jPanel1.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 40, 25));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setForeground(new java.awt.Color(0, 204, 0));
@@ -282,8 +287,8 @@ public class jPanelRootMethods extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Intervalo");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 60, 30));
+        jLabel5.setText("Intervalo donde se extima la raiz");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 200, 30));
 
         jButtonCalcular.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCalcular.setFont(new java.awt.Font("Mandalore Expanded", 0, 14)); // NOI18N
@@ -293,7 +298,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 jButtonCalcularActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 290, 30));
+        jPanel1.add(jButtonCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 290, 30));
 
         Tolerancia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Tolerancia.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -329,6 +334,15 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Funcíon :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, 30));
+
+        Aproximacion1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Aproximacion1.setText("0");
+        Aproximacion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Aproximacion1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Aproximacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 40, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -382,7 +396,8 @@ public class jPanelRootMethods extends javax.swing.JPanel {
             double temptolerancia = Double.valueOf(Tolerancia.getText());
             double a = Double.valueOf(A.getText());
             double b = Double.valueOf(B.getText());
-            double aprox = Double.valueOf(Aproximacion.getText());
+            double aprox1 = Double.valueOf(Aproximacion1.getText());
+            double aprox2 = Double.valueOf(Aproximacion2.getText());
             x.setFunction(tempfuncion);
             
             if(temptolerancia < 0.0000000000000009){
@@ -391,7 +406,9 @@ public class jPanelRootMethods extends javax.swing.JPanel {
             x.setTolerance(temptolerancia);
             x.setIntervalos(a, b);
             x.setTypeMethod(type);
-            x.setAproximacion(aprox);
+            x.setAproximacion1(aprox1);
+            x.setAproximacion2(aprox2);
+            
             try {           
               
                 if (x.Bolsano(a, b, tempfuncion)) {
@@ -451,9 +468,9 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabelError.setVisible(false);
     }//GEN-LAST:event_AMouseClicked
 
-    private void AproximacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AproximacionActionPerformed
+    private void Aproximacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aproximacion2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AproximacionActionPerformed
+    }//GEN-LAST:event_Aproximacion2ActionPerformed
 
     private void jSpinnerDecimalesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerDecimalesStateChanged
 
@@ -480,35 +497,44 @@ public class jPanelRootMethods extends javax.swing.JPanel {
 
     private void jRSecanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSecanteActionPerformed
         type = TypeMethod.MSecante;
-        jLabelAprox.setVisible(false);
-        Aproximacion.setVisible(false);
+        jLabelAprox.setVisible(true);
+        Aproximacion1.setVisible(true);
+        Aproximacion2.setVisible(true);
     }//GEN-LAST:event_jRSecanteActionPerformed
 
     private void jRNewtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNewtonActionPerformed
         if(jRNewton.isSelected()){
             type = TypeMethod.MNewton;
             jLabelAprox.setVisible(true);
-            Aproximacion.setVisible(true);
+            Aproximacion1.setVisible(true);
+            Aproximacion2.setVisible(false);
         }
     }//GEN-LAST:event_jRNewtonActionPerformed
 
     private void jRRegulaFalsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRRegulaFalsiActionPerformed
         type = TypeMethod.MRegula_falsi;
         jLabelAprox.setVisible(false);
-        Aproximacion.setVisible(false);
+        Aproximacion2.setVisible(false);
+        Aproximacion1.setVisible(false);
     }//GEN-LAST:event_jRRegulaFalsiActionPerformed
 
     private void jRBisepccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBisepccionActionPerformed
         type = TypeMethod.Mbiseccion;
         jLabelAprox.setVisible(false);
-        Aproximacion.setVisible(false);
+        Aproximacion2.setVisible(false);
+        Aproximacion1.setVisible(false);
     }//GEN-LAST:event_jRBisepccionActionPerformed
+
+    private void Aproximacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aproximacion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Aproximacion1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField A;
     private javax.swing.JTextField A1;
-    private javax.swing.JTextField Aproximacion;
+    private javax.swing.JTextField Aproximacion1;
+    private javax.swing.JTextField Aproximacion2;
     private javax.swing.JTextField B;
     private javax.swing.JTextField B1;
     private javax.swing.JTextField D;

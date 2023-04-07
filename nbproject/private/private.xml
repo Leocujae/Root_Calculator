@@ -5,24 +5,24 @@
         <group>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Factory/MethodRootCreator.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Factory/TypeMethod.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/Panels/jPanelRootMethods.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Messages/ExceptionMessages.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Grapher/Function.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_Calculation_Methods/Mbiseccion.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/Windows.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_Calculation_Methods/MSecante.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/MathFunctions/Sqr.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/JPanelInterpolation.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Factory/FactoryMethod.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/jPanelRootMethods.java</file>
-            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Exception/Messages.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Controller/Controller.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Factory/MethodInterpolationCreator.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/MathFunctions/Sin.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_Calculation_Methods/Method.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_Calculation_Methods/MethodResult.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/Panels/JPanelInterpolation.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_Calculation_Methods/MRegula_falsi.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Grapher/Graph.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Interpolation_FunctionMethods/Lagrange.java</file>
             <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/Root_Calculation_Methods/MNewton.java</file>
+            <file>file:/C:/Users/EL_DEO/Documents/NetBeansProjects/Root_Calculator_1/src/GUI/IMG/help_25px.png</file>
         </group>
     </open-files>
 </project-private>

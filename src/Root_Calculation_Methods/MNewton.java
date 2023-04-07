@@ -64,7 +64,7 @@ public final class MNewton extends Method{
     public void loadDateNewtom() {
      
         this.loadDate();
-        x = Controller.getInstance().getAproximacion();
+        x = Controller.getInstance().getAproximacion1();
         Node nodoFuncion;
         Node nodoDerivada;
         try {
