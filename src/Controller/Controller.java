@@ -3,25 +3,35 @@ package Controller;
 
 
 import Factory.MethodRootCreator;
-import Factory.TypeMethod;
+import Factory.Enum.TypeMethod;
+import Factory.FactoryOfTactories;
+import Factory.Factorys.ConcreteFactory;
 import Root_Calculation_Methods.Method;
 import Root_Calculation_Methods.MethodResult;
-import Factory.FactoryMethod;
+import Factory.Factorys.FactoryMethod;
+import Root_Calculation_Methods.MNewton;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.lsmp.djep.djep.DJep;
+import org.lsmp.djep.xjep.NodeFactory;
+import org.nfunk.jep.ASTFunNode;
+import org.nfunk.jep.ASTStart;
+import org.nfunk.jep.Node;
+import org.nfunk.jep.ParseException;
 
 /**
  *
  * @author EL_DEO
  */
-public class Controller {
+public final class Controller {
 
      
     
     
     private static Controller controller = null;
   
-    private FactoryMethod factory;
+    private ConcreteFactory factory;
     private DJep DJep;
      
     
@@ -61,7 +71,7 @@ public class Controller {
         this.DJep.setImplicitMul(true);
         this.DJep.addStandardDiffRules();
         
-        
+        this.setFactoryType("1");
         //Nueva funcion seno con metodo para convertir de grados a radianes
         //this.DJep.removeFunction("sin");
         //this.DJep.addFunction("sin",new Sin());
@@ -132,19 +142,86 @@ public class Controller {
     }
     
     
-    
+    public void setFactoryType(String type){
+        FactoryOfTactories temp = new FactoryOfTactories();
+        factory = (ConcreteFactory)temp.CreateConcreteFactory(type);
+   
+    }
     
     
     
     
     public void Resolver() throws Exception {
-
         //Implementar el patros para poder obtener soluciones de las otras fabricas
-        MethodRootCreator Creator = new MethodRootCreator();
-        Solution = ((Method) Creator.CreateMethod(typeMethod)).Solution();
+        Solution = ((Method)factory.CreateMethod(typeMethod)).Solution();
+
+    }
+    
+    public String DeriveFunction(String function){
+        String r = null;
+        Node nodoFuncion;
+        Node nodoDerivada;
+         try {
+
+            nodoFuncion = this.DJep.parse(function);
+            Node DF = this.DJep.differentiate(nodoFuncion,"x");
+            nodoDerivada = this.DJep.simplify(DF);
+            r = this.DJep.toString(nodoDerivada);
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(MNewton.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
+    }
+    public double EvalFunction(String function, double value) {
+        double result = Double.NaN;
+        try {
+            DJep.addVariable("x", value);
+            DJep.parseExpression(function);
+
+            //
+            DominioDefinition(function);
+
+            result = DJep.getValue();
+
+        } catch (Exception e) {
+            //throw new Exception("Función no válida");
+        }
+
+        return result;
 
     }
 
+    public void DominioDefinition(String function) {
+         //Identificar Dominio
+
+        try {
+            Node nodo = DJep.parse(function);
+            for (int i = 0; i < nodo.jjtGetNumChildren(); i++) {
+                String functionName = "";
+                if (nodo instanceof ASTFunNode) {
+                    functionName = ((ASTFunNode) nodo).getName();
+                } else if (nodo instanceof ASTStart) {
+                    functionName = "sqrt";
+                }
+                switch (functionName) {
+                    case "/": {
+                        System.out.println("/");
+                        break;
+                    }
+                    case "sqrt": {
+                        System.out.println("Raiz");
+                        break;
+                    }
+                }
+                nodo = nodo.jjtGetChild(i);
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    
+    
     
     public boolean Bolsano(double a , double b , String function){
 

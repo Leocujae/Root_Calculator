@@ -1,6 +1,7 @@
 package Interpolation_FunctionMethods;
 
 
+import Controller.Controller;
 import java.util.ArrayList;
 import org.lsmp.djep.djep.DJep;
 import org.nfunk.jep.Node;
@@ -23,14 +24,8 @@ public class Lagrange {
         this.PolinomiosL = new ArrayList<>();
         
         
-        DJep = new DJep();
-        DJep.addStandardFunctions();
-        DJep.addStandardConstants();
-        DJep.addComplex();
-        DJep.setAllowUndeclared(true);
-        DJep.setAllowAssignment(true);
-        DJep.setImplicitMul(true);
-        DJep.addStandardDiffRules();
+        DJep = Controller.getInstance().getDJep();
+
     }
     public double CalcularPL(double x) {
         double r = 0;

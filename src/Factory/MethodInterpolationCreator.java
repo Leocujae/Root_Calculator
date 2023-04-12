@@ -1,20 +1,29 @@
 
 package Factory;
 
-import Root_Calculation_Methods.Method;
+import Factory.Factorys.ConcreteFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author EL_DEO
  */
-public class MethodInterpolationCreator implements FactoryMethod{
+public class MethodInterpolationCreator implements ConcreteFactory{
 
     
-    
-    //Pendiente
-    
     @Override
-    public Method CreateMethod(TypeMethod type) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } 
+    public Object CreateMethod(Object type) {
+        String classname = "Root_Calculation_Methods."+ type;
+        Object temp = null;
+        Class c = null;
+        try {
+            c = Class.forName(classname);
+            temp =  c.newInstance();
+   
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
+            Logger.getLogger(MethodRootCreator.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        return temp;
+    }
 }
