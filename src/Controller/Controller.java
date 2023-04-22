@@ -2,19 +2,16 @@
 package Controller;
 
 
-import Factory.MethodRootCreator;
 import Factory.Enum.TypeMethod;
 import Factory.FactoryOfTactories;
 import Factory.Factorys.ConcreteFactory;
 import Root_Calculation_Methods.Method;
 import Root_Calculation_Methods.MethodResult;
-import Factory.Factorys.FactoryMethod;
 import Root_Calculation_Methods.MNewton;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lsmp.djep.djep.DJep;
-import org.lsmp.djep.xjep.NodeFactory;
 import org.nfunk.jep.ASTFunNode;
 import org.nfunk.jep.ASTStart;
 import org.nfunk.jep.Node;
@@ -71,7 +68,7 @@ public final class Controller {
         this.DJep.setImplicitMul(true);
         this.DJep.addStandardDiffRules();
         
-        this.setFactoryType("1");
+        this.setFactoryType(0);
         //Nueva funcion seno con metodo para convertir de grados a radianes
         //this.DJep.removeFunction("sin");
         //this.DJep.addFunction("sin",new Sin());
@@ -142,9 +139,9 @@ public final class Controller {
     }
     
     
-    public void setFactoryType(String type){
+    public void setFactoryType(int index){
         FactoryOfTactories temp = new FactoryOfTactories();
-        factory = (ConcreteFactory)temp.CreateConcreteFactory(type);
+        factory = (ConcreteFactory)temp.CreateConcreteFactory(index);
    
     }
     

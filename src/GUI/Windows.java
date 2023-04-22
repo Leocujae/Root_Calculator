@@ -21,6 +21,7 @@ public class Windows extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelRootMethods1 = new GUI.Panels.jPanelRootMethods();
         jPanelInterpolation1 = new GUI.Panels.JPanelInterpolation();
+        jPanelSistemasDeEcuaciones1 = new GUI.Panels.jPanelSistemasDeEcuaciones();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MN-2023");
@@ -28,8 +29,14 @@ public class Windows extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(650, 800));
         setResizable(false);
 
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
         jTabbedPane1.addTab("Calcular Raices", jPanelRootMethods1);
         jTabbedPane1.addTab("Interpolar Funciones", jPanelInterpolation1);
+        jTabbedPane1.addTab("tab3", jPanelSistemasDeEcuaciones1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -45,6 +52,16 @@ public class Windows extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+
+        int index = jTabbedPane1.getSelectedIndex();
+        if (index != -1) {
+
+            Controller.Controller.getInstance().setFactoryType(index);
+
+        }
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -87,6 +104,7 @@ public class Windows extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private GUI.Panels.JPanelInterpolation jPanelInterpolation1;
     private GUI.Panels.jPanelRootMethods jPanelRootMethods1;
+    private GUI.Panels.jPanelSistemasDeEcuaciones jPanelSistemasDeEcuaciones1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 

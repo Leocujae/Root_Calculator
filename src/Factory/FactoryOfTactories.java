@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class FactoryOfTactories implements FactoryMethod {
 
     @Override
-    public ConcreteFactory CreateConcreteFactory(String num) {
+    public ConcreteFactory CreateConcreteFactory(int num) {
 
         ConcreteFactory r = null;
         try {
@@ -27,10 +27,10 @@ public class FactoryOfTactories implements FactoryMethod {
 
             switch (num) {
 
-                case "1":
+                case 0:
                     classname = "Factory.MethodRootCreator";
                     break;
-                case "2":
+                case 1:
                     classname = "Factory.MethodInterpolationCreator";
                     break;
 

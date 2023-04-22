@@ -16,6 +16,7 @@ public class JPanelInterpolation extends javax.swing.JPanel {
     public JPanelInterpolation() {
         initComponents();
         CentrarTabla();
+  
     }
 
     
