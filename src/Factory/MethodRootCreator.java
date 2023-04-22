@@ -4,7 +4,7 @@
  */
 package Factory;
 
-import Root_Calculation_Methods.Method;
+import Factory.Factorys.ConcreteFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,20 +12,35 @@ import java.util.logging.Logger;
  *
  * @author EL_DEO
  */
-public class MethodRootCreator implements FactoryMethod{
+public class MethodRootCreator implements ConcreteFactory{
 
     public MethodRootCreator() {}
 
-    //FactoryMethod
+//    //FactoryMethod
+//    public Object CreateMethod(TypeMethod type) {
+//        
+//        String classname = "Root_Calculation_Methods."+ type;
+//        Method temp = null;
+//        Class c = null;
+//        try {
+//            c = Class.forName(classname);
+//            temp =   (Method) c.newInstance();
+//   
+//        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
+//            Logger.getLogger(MethodRootCreator.class.getName()).log(Level.SEVERE, null, ex);
+//        }  
+//        return temp;
+//    }
+
     @Override
-    public Method CreateMethod(TypeMethod type) {
+    public Object CreateMethod(Object type) {
         
         String classname = "Root_Calculation_Methods."+ type;
-        Method temp = null;
+        Object temp = null;
         Class c = null;
         try {
             c = Class.forName(classname);
-            temp =   (Method) c.newInstance();
+            temp = c.newInstance();
    
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
             Logger.getLogger(MethodRootCreator.class.getName()).log(Level.SEVERE, null, ex);
@@ -33,6 +48,4 @@ public class MethodRootCreator implements FactoryMethod{
         return temp;
     }
 
- 
-    
 }

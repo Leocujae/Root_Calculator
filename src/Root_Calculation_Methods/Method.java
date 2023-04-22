@@ -30,18 +30,9 @@ public abstract class Method {
         b = Controller.getInstance().getArreglo()[1];
     }
  
-    protected double CalcularFuncion(String string, double Xvalue) {
+    protected double CalcularFuncion(String function, double Xvalue) {
        
-        double result = Double.NaN;
-        try{
-        DJep.addVariable("x", Xvalue);
-        DJep.parseExpression(string);
-        result =DJep.getValue();
-        
-        }catch(Exception e){
-          //throw new Exception("Función no válida");
-        }
-        
+        double result = Controller.getInstance().EvalFunction(function , Xvalue);
         return result;
     }
 

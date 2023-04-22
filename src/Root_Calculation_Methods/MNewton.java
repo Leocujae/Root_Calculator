@@ -65,20 +65,8 @@ public final class MNewton extends Method{
      
         this.loadDate();
         x = Controller.getInstance().getAproximacion1();
-        Node nodoFuncion;
-        Node nodoDerivada;
-        try {
+        this.Derivada = Controller.getInstance().DeriveFunction(function);
 
-            nodoFuncion = this.DJep.parse(function);
-            Node DF = this.DJep.differentiate(nodoFuncion,"x");
-            nodoDerivada = this.DJep.simplify(DF);
-            this.Derivada = this.DJep.toString(nodoDerivada);
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(MNewton.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
     }
     
 }

@@ -6,7 +6,7 @@
 package GUI.Panels;
 
 import Controller.Controller;
-import Factory.TypeMethod;
+import Factory.Enum.TypeMethod;
 import Grapher.Function;
 import Grapher.Graph;
 import Messages.Messages;
