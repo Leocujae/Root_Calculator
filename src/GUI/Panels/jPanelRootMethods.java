@@ -6,14 +6,14 @@
 package GUI.Panels;
 
 import Controller.Controller;
-import Factory.Enum.TypeMethod;
-import Grapher.Function;
-import Grapher.Graph;
+import Factory.Enum.Type_Method;
 import Messages.Messages;
-import Root_Calculation_Methods.MethodResult;
+import Functionalities_Methods.Root_Calculation.MethodResult;
+import java.awt.Color;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,23 +21,23 @@ import javax.swing.table.DefaultTableModel;
  * @author EL_DEO
  */
 public class jPanelRootMethods extends javax.swing.JPanel {
-    Messages SMS ;
-    Controller x = Controller.getInstance();
-    TypeMethod type;
+    private Messages SMS ;
+    private Controller x = Controller.getInstance();
+    private Type_Method type;
 
-    DecimalFormat formato;
-    String decimales;
-    Graph grafica = new Graph("Graficadora", "Eje X", "Eje Y");
+    private DecimalFormat formato;
+    private String decimales;
+//    private Graph grafica = new Graph("Graficadora", "Eje X", "Eje Y");
 
     public jPanelRootMethods() {
         SMS = new Messages();
         initComponents();
         jLabelAprox.setVisible(false);
         
-        Aproximacion1.setVisible(false);
-        Aproximacion2.setVisible(false);
+        AproximacionA.setVisible(false);
+        AproximacionB.setVisible(false);
         
-        
+        type = Type_Method.Mbiseccion;
         
         decimales = "#.####";
         formato = new DecimalFormat(decimales);
@@ -54,19 +54,14 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         Funcion = new javax.swing.JTextField();
         jLabelDecimales = new javax.swing.JLabel();
         jLabelAprox = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        A1 = new javax.swing.JTextField();
-        Aproximacion2 = new javax.swing.JTextField();
-        jPanelGrafica = grafica.DibujarGrafica();
-        D = new javax.swing.JTextField();
+        AproximacionB = new javax.swing.JTextField();
         B = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSpinnerDecimales = new javax.swing.JSpinner();
         jPanel6 = new javax.swing.JPanel();
         jRBisepccion = new javax.swing.JRadioButton();
         jRRegulaFalsi = new javax.swing.JRadioButton();
         jRNewton = new javax.swing.JRadioButton();
         jRSecante = new javax.swing.JRadioButton();
-        jSpinnerDecimales = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         A = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,15 +69,15 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jButtonCalcular = new javax.swing.JButton();
         Tolerancia = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
         jLabelError = new javax.swing.JLabel();
-        B1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        Aproximacion1 = new javax.swing.JTextField();
+        AproximacionA = new javax.swing.JTextField();
+
+        setMaximumSize(new java.awt.Dimension(500, 500));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setMinimumSize(new java.awt.Dimension(650, 800));
-        jPanel1.setPreferredSize(new java.awt.Dimension(650, 800));
+        jPanel1.setMaximumSize(new java.awt.Dimension(650, 500));
+        jPanel1.setMinimumSize(new java.awt.Dimension(650, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(650, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Funcion.setBackground(new java.awt.Color(0, 0, 0));
@@ -97,71 +92,51 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 FuncionActionPerformed(evt);
             }
         });
-        jPanel1.add(Funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 58, 260, 40));
+        jPanel1.add(Funcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 670, 36));
         Funcion.getAccessibleContext().setAccessibleName("");
         Funcion.getAccessibleContext().setAccessibleDescription("");
 
         jLabelDecimales.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelDecimales.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDecimales.setText("Decimales");
-        jPanel1.add(jLabelDecimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 720, 60, 20));
+        jPanel1.add(jLabelDecimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 650, 60, 20));
 
         jLabelAprox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabelAprox.setForeground(new java.awt.Color(255, 255, 255));
         jLabelAprox.setText("Aproximacion inicial");
-        jPanel1.add(jLabelAprox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 120, 30));
+        jPanel1.add(jLabelAprox, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 88, 130, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Mandalore Expanded", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 0, 0));
-        jButton1.setText("Limpiar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AproximacionB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        AproximacionB.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AproximacionB.setText("1");
+        AproximacionB.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        AproximacionB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AproximacionBActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 380, 90, 30));
-
-        A1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        A1.setText("-5");
-        A1.setMaximumSize(new java.awt.Dimension(6, 20));
-        jPanel1.add(A1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 40, 30));
-
-        Aproximacion2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Aproximacion2.setText("1");
-        Aproximacion2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Aproximacion2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Aproximacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 40, 25));
-
-        javax.swing.GroupLayout jPanelGraficaLayout = new javax.swing.GroupLayout(jPanelGrafica);
-        jPanelGrafica.setLayout(jPanelGraficaLayout);
-        jPanelGraficaLayout.setHorizontalGroup(
-            jPanelGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
-        jPanelGraficaLayout.setVerticalGroup(
-            jPanelGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanelGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 370, 350));
-
-        D.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        D.setText("0.1");
-        jPanel1.add(D, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 380, 40, 30));
+        jPanel1.add(AproximacionB, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 114, 80, 25));
 
         B.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        B.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         B.setText("2");
+        B.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BActionPerformed(evt);
             }
         });
-        jPanel1.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 40, 25));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 280, 10));
+        jPanel1.add(B, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 171, 80, 28));
+
+        jSpinnerDecimales.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jSpinnerDecimales.setModel(new javax.swing.SpinnerNumberModel(4, 1, 15, 1));
+        jSpinnerDecimales.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jSpinnerDecimales.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinnerDecimalesStateChanged(evt);
+            }
+        });
+        jPanel1.add(jSpinnerDecimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 60, -1));
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Métodos para determinar raices", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -171,6 +146,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         buttonGroup1.add(jRBisepccion);
         jRBisepccion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jRBisepccion.setForeground(new java.awt.Color(255, 255, 255));
+        jRBisepccion.setSelected(true);
         jRBisepccion.setText("Bisección ");
         jRBisepccion.setOpaque(false);
         jRBisepccion.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +154,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 jRBisepccionActionPerformed(evt);
             }
         });
-        jPanel6.add(jRBisepccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 54, 144, -1));
+        jPanel6.add(jRBisepccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 110, -1));
 
         buttonGroup1.add(jRRegulaFalsi);
         jRRegulaFalsi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -190,7 +166,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 jRRegulaFalsiActionPerformed(evt);
             }
         });
-        jPanel6.add(jRRegulaFalsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 82, -1, -1));
+        jPanel6.add(jRRegulaFalsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         buttonGroup1.add(jRNewton);
         jRNewton.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -202,38 +178,36 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 jRNewtonActionPerformed(evt);
             }
         });
-        jPanel6.add(jRNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 29, -1, -1));
+        jPanel6.add(jRNewton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
 
         buttonGroup1.add(jRSecante);
         jRSecante.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jRSecante.setForeground(new java.awt.Color(255, 255, 255));
         jRSecante.setText("Secante");
         jRSecante.setOpaque(false);
+        jRSecante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRSecanteMouseClicked(evt);
+            }
+        });
         jRSecante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRSecanteActionPerformed(evt);
             }
         });
-        jPanel6.add(jRSecante, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 110, -1, -1));
+        jPanel6.add(jRSecante, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 300, 150));
-
-        jSpinnerDecimales.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jSpinnerDecimales.setModel(new javax.swing.SpinnerNumberModel(4, 1, 15, 1));
-        jSpinnerDecimales.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSpinnerDecimalesStateChanged(evt);
-            }
-        });
-        jPanel1.add(jSpinnerDecimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 740, 60, 30));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 220, 90));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tolerancia");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 70, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 70, -1));
 
         A.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        A.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         A.setText("-2");
+        A.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         A.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AMouseClicked(evt);
@@ -244,7 +218,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 AActionPerformed(evt);
             }
         });
-        jPanel1.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 40, 25));
+        jPanel1.add(A, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 171, 80, 27));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setForeground(new java.awt.Color(0, 204, 0));
@@ -283,12 +257,12 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 670, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 209, 670, 280));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Intervalo donde se extima la raiz");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 200, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 150, -1, -1));
 
         jButtonCalcular.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCalcular.setFont(new java.awt.Font("Mandalore Expanded", 0, 14)); // NOI18N
@@ -298,66 +272,43 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 jButtonCalcularActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 290, 30));
+        jPanel1.add(jButtonCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 220, 30));
 
         Tolerancia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Tolerancia.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        Tolerancia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Tolerancia.setText("0.002");
-        jPanel1.add(Tolerancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 80, 25));
-
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Mandalore Expanded", 0, 18)); // NOI18N
-        jButton3.setText("Graficar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 100, 30));
+        Tolerancia.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(Tolerancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 120, 30));
 
         jLabelError.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabelError.setForeground(new java.awt.Color(255, 0, 0));
         jLabelError.setFocusable(false);
-        jPanel1.add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 424, 670, 30));
+        jPanel1.add(jLabelError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 495, 670, 30));
 
-        B1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        B1.setText("5");
-        B1.setMaximumSize(new java.awt.Dimension(6, 20));
-        B1.addActionListener(new java.awt.event.ActionListener() {
+        AproximacionA.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        AproximacionA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AproximacionA.setText("0");
+        AproximacionA.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        AproximacionA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B1ActionPerformed(evt);
+                AproximacionAActionPerformed(evt);
             }
         });
-        jPanel1.add(B1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 40, 30));
-
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Funcíon :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, 30));
-
-        Aproximacion1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        Aproximacion1.setText("0");
-        Aproximacion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Aproximacion1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Aproximacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 40, 25));
+        jPanel1.add(AproximacionA, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 114, 80, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -365,56 +316,31 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_BActionPerformed
 
-    private void B1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_B1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        String def = Funcion.getText();
-        double x0 = Double.parseDouble(A1.getText());
-        double xn = Double.parseDouble(B1.getText());
-        double d = Double.parseDouble(D.getText());
-
-        Function f = new Function(def);
-        double [] x =f.rango(x0, xn, d);
-        try{
-            double [] y =f.eval(x);
-            grafica.crearGrafica(def, x, y);
-            grafica.DibujarGrafica();
-
-        }
-        catch(Exception e){
-
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
        
-        if(type != null){
+        
+        
+        if(EnableBotton()){
+            
             String tempfuncion = Funcion.getText();
             double temptolerancia = Double.valueOf(Tolerancia.getText());
             double a = Double.valueOf(A.getText());
             double b = Double.valueOf(B.getText());
-            double aprox1 = Double.valueOf(Aproximacion1.getText());
-            double aprox2 = Double.valueOf(Aproximacion2.getText());
-            x.setFunction(tempfuncion);
+            double aprox1 = Double.valueOf(AproximacionA.getText());
+            double aprox2 = Double.valueOf(AproximacionB.getText());
+            
             
             if(temptolerancia < 0.0000000000000009){
                 JOptionPane.showMessageDialog(this, SMS.Mensage_1());
             }
-            x.setTolerance(temptolerancia);
-            x.setIntervalos(a, b);
-            x.setTypeMethod(type);
-            x.setAproximacion1(aprox1);
-            x.setAproximacion2(aprox2);
+           
             
             try {           
               
                 if (x.Bolsano(a, b, tempfuncion)) {
                     jLabelError.setVisible(false);
-                    x.Resolver();
-
+                    x.RootCalculator(type, tempfuncion, a, b, temptolerancia, 100, aprox1, aprox2);
+                    
                     ArrayList<MethodResult> solution = x.getSolution();
                     DefaultTableModel model = new DefaultTableModel();
                     String row[] = {"Iteracion", "Valor de x", "Error"};
@@ -449,16 +375,7 @@ public class jPanelRootMethods extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
         }
-        else{
-            jLabelError.setText(SMS.Mensage_4());
-            jLabelError.setVisible(true);
-        }
     }//GEN-LAST:event_jButtonCalcularActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        grafica.Limpiar();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AActionPerformed
 
@@ -468,9 +385,9 @@ public class jPanelRootMethods extends javax.swing.JPanel {
         jLabelError.setVisible(false);
     }//GEN-LAST:event_AMouseClicked
 
-    private void Aproximacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aproximacion2ActionPerformed
+    private void AproximacionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AproximacionBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Aproximacion2ActionPerformed
+    }//GEN-LAST:event_AproximacionBActionPerformed
 
     private void jSpinnerDecimalesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinnerDecimalesStateChanged
 
@@ -496,55 +413,54 @@ public class jPanelRootMethods extends javax.swing.JPanel {
     }//GEN-LAST:event_FuncionActionPerformed
 
     private void jRSecanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSecanteActionPerformed
-        type = TypeMethod.MSecante;
-        jLabelAprox.setVisible(true);
-        Aproximacion1.setVisible(true);
-        Aproximacion2.setVisible(true);
+       
     }//GEN-LAST:event_jRSecanteActionPerformed
 
     private void jRNewtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNewtonActionPerformed
         if(jRNewton.isSelected()){
-            type = TypeMethod.MNewton;
+            type = Type_Method.MNewton;
             jLabelAprox.setVisible(true);
-            Aproximacion1.setVisible(true);
-            Aproximacion2.setVisible(false);
+            AproximacionB.setVisible(false);
+            AproximacionA.setVisible(true);
+            
         }
     }//GEN-LAST:event_jRNewtonActionPerformed
 
     private void jRRegulaFalsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRRegulaFalsiActionPerformed
-        type = TypeMethod.MRegula_falsi;
+        type = Type_Method.MRegula_falsi;
         jLabelAprox.setVisible(false);
-        Aproximacion2.setVisible(false);
-        Aproximacion1.setVisible(false);
+        AproximacionB.setVisible(false);
+        AproximacionA.setVisible(false);
     }//GEN-LAST:event_jRRegulaFalsiActionPerformed
 
     private void jRBisepccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBisepccionActionPerformed
-        type = TypeMethod.Mbiseccion;
+        type = Type_Method.Mbiseccion;
         jLabelAprox.setVisible(false);
-        Aproximacion2.setVisible(false);
-        Aproximacion1.setVisible(false);
+        AproximacionB.setVisible(false);
+        AproximacionA.setVisible(false);
     }//GEN-LAST:event_jRBisepccionActionPerformed
 
-    private void Aproximacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Aproximacion1ActionPerformed
+    private void AproximacionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AproximacionAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Aproximacion1ActionPerformed
+    }//GEN-LAST:event_AproximacionAActionPerformed
+
+    private void jRSecanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRSecanteMouseClicked
+         type = Type_Method.MSecante;
+        jLabelAprox.setVisible(true);
+        AproximacionA.setVisible(true);
+        AproximacionB.setVisible(true);
+    }//GEN-LAST:event_jRSecanteMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField A;
-    private javax.swing.JTextField A1;
-    private javax.swing.JTextField Aproximacion1;
-    private javax.swing.JTextField Aproximacion2;
+    private javax.swing.JTextField AproximacionA;
+    private javax.swing.JTextField AproximacionB;
     private javax.swing.JTextField B;
-    private javax.swing.JTextField B1;
-    private javax.swing.JTextField D;
     private javax.swing.JTextField Funcion;
     private javax.swing.JTextField Tolerancia;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonCalcular;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelAprox;
@@ -552,14 +468,70 @@ public class jPanelRootMethods extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanelGrafica;
     private javax.swing.JRadioButton jRBisepccion;
     private javax.swing.JRadioButton jRNewton;
     private javax.swing.JRadioButton jRRegulaFalsi;
     private javax.swing.JRadioButton jRSecante;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSpinner jSpinnerDecimales;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+
+    public boolean EnableBotton(){
+        
+        boolean temp = true;
+        if(!(Tolerancia.getText().length() > 0)){
+            Tolerancia.setBorder(new LineBorder(Color.RED));
+            temp = false;
+        }
+        else{
+            Tolerancia.setBorder(new LineBorder(Color.WHITE));
+        }
+        if(!(AproximacionA.getText().length() > 0)){
+            AproximacionA.setBorder(new LineBorder(Color.RED));
+            temp = false;
+        }
+        else{
+            AproximacionA.setBorder(new LineBorder(Color.WHITE));
+        }
+        if(!(AproximacionB.getText().length() > 0)){
+            AproximacionB.setBorder(new LineBorder(Color.RED));
+            temp = false;
+        }
+        else{
+            AproximacionB.setBorder(new LineBorder(Color.WHITE));
+        }
+        if(!(Funcion.getText().length() > 0)){
+            Funcion.setBorder(new LineBorder(Color.RED));
+            temp = false;
+        }
+        else{
+            Funcion.setBorder(new LineBorder(Color.WHITE));
+        }
+        if(!(A.getText().length() > 0)){
+            A.setBorder(new LineBorder(Color.RED));
+            temp = false;
+        }
+        else{
+            A.setBorder(new LineBorder(Color.WHITE));
+        }
+        if(!(B.getText().length() > 0)){
+            B.setBorder(new LineBorder(Color.RED));
+            temp = false;
+        }
+        else{
+            B.setBorder(new LineBorder(Color.WHITE));
+        }
+        return temp;
+        
+    }
+
+
+
+
+
+
+
+
 }

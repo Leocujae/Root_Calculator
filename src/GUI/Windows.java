@@ -1,5 +1,13 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package GUI;
+
+import Functionalities_Methods.NumericOptimitation.SeccionAurea;
+import GUI.Panels.JPanelGraficadora;
+
 
 /**
  *
@@ -8,60 +16,141 @@ package GUI;
 public class Windows extends javax.swing.JFrame {
 
     
+   
+    JPanelGraficadora graficadora = new JPanelGraficadora(this, rootPaneCheckingEnabled);    
     public Windows() {
         initComponents();
-      
+
+        SeccionAurea temp = new SeccionAurea();
+        temp.optimitation('<');
+        
+        
+        
+        
+        
+        
+        
     }
 
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanelRootMethods1 = new GUI.Panels.jPanelRootMethods();
+        jPanelRootMethods2 = new GUI.Panels.jPanelRootMethods();
+        jPanelSistemasDeEcuaciones1 = new GUI.Panels.jPanel_Ecuation_Systems();
         jPanelInterpolation1 = new GUI.Panels.JPanelInterpolation();
-        jPanelSistemasDeEcuaciones1 = new GUI.Panels.jPanelSistemasDeEcuaciones();
+        jPanelInterpolationNewton1 = new GUI.Panels.JPanelInterpolationNewton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jCheckBoxMostrarGraficadora = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("MN-2023");
-        setMaximumSize(new java.awt.Dimension(650, 800));
-        setMinimumSize(new java.awt.Dimension(650, 800));
-        setResizable(false);
+        setMinimumSize(new java.awt.Dimension(650, 700));
 
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane1MouseClicked(evt);
+        jPanel.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel.setMaximumSize(new java.awt.Dimension(650, 600));
+        jPanel.setMinimumSize(new java.awt.Dimension(650, 600));
+        jPanel.setPreferredSize(new java.awt.Dimension(650, 600));
+
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTabbedPane1.setMaximumSize(new java.awt.Dimension(650, 510));
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(650, 510));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(650, 510));
+
+        jPanelRootMethods2.setMaximumSize(new java.awt.Dimension(800, 500));
+        jPanelRootMethods2.setMinimumSize(new java.awt.Dimension(800, 500));
+        jPanelRootMethods2.setPreferredSize(new java.awt.Dimension(800, 500));
+        jTabbedPane1.addTab("Calcular Raices", jPanelRootMethods2);
+        jTabbedPane1.addTab("Sistema de ecuaciones", jPanelSistemasDeEcuaciones1);
+
+        jPanelInterpolation1.setMaximumSize(new java.awt.Dimension(600, 500));
+        jPanelInterpolation1.setMinimumSize(new java.awt.Dimension(600, 500));
+        jPanelInterpolation1.setPreferredSize(new java.awt.Dimension(600, 500));
+        jTabbedPane1.addTab("Interpolación Lagrange", jPanelInterpolation1);
+        jTabbedPane1.addTab("Interpolación Newton", jPanelInterpolationNewton1);
+
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("Opciones");
+
+        jMenuItem1.setText("Calcular raices de funciones");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Interpolar funciones");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Calcular sistemas de ecuaciones");
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("ver");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
             }
         });
-        jTabbedPane1.addTab("Calcular Raices", jPanelRootMethods1);
-        jTabbedPane1.addTab("Interpolar Funciones", jPanelInterpolation1);
-        jTabbedPane1.addTab("tab3", jPanelSistemasDeEcuaciones1);
+
+        jCheckBoxMostrarGraficadora.setText("Mostrar Graficadora");
+        jCheckBoxMostrarGraficadora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMostrarGraficadoraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jCheckBoxMostrarGraficadora);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-
-        int index = jTabbedPane1.getSelectedIndex();
-        if (index != -1) {
-
-            Controller.Controller.getInstance().setFactoryType(index);
-
+    private void jCheckBoxMostrarGraficadoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMostrarGraficadoraActionPerformed
+        
+        if(jCheckBoxMostrarGraficadora.isSelected()){
+            graficadora.setVisible(true);
         }
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
+        else{
+            graficadora.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_jCheckBoxMostrarGraficadoraActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,7 +182,6 @@ public class Windows extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new Windows().setVisible(true);
             }
@@ -101,21 +189,18 @@ public class Windows extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMostrarGraficadora;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel;
     private GUI.Panels.JPanelInterpolation jPanelInterpolation1;
-    private GUI.Panels.jPanelRootMethods jPanelRootMethods1;
-    private GUI.Panels.jPanelSistemasDeEcuaciones jPanelSistemasDeEcuaciones1;
+    private GUI.Panels.JPanelInterpolationNewton jPanelInterpolationNewton1;
+    private GUI.Panels.jPanelRootMethods jPanelRootMethods2;
+    private GUI.Panels.jPanel_Ecuation_Systems jPanelSistemasDeEcuaciones1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-
-
-
-
-   
-
-
-
-
-
 }
-

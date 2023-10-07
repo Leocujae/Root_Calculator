@@ -14,9 +14,11 @@ public class MethodInterpolationCreator implements ConcreteFactory{
     
     @Override
     public Object CreateMethod(Object type) {
-        String classname = "Root_Calculation_Methods."+ type;
+        
+        String classname = "Functionalities_Methods.Interpolation."+ type;
         Object temp = null;
         Class c = null;
+        System.out.print(type.toString());
         try {
             c = Class.forName(classname);
             temp =  c.newInstance();
